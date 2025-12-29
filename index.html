@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a3d62">
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iglesia Pentecostal El Jordán</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  background: #f4f4f4;
+}
+
+/* NAVIGATION */
+nav {
+  position: sticky;
+  top:0;
+  background: rgba(30,58,95,0.95);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  z-index: 100;
+}
+nav a {
+  color:white;
+  margin:0 15px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+nav a:hover { opacity:0.8; }
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero.jpg') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  flex-direction: column;
+}
+.hero h1, .hero p, .hero .btn {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-out;
+}
+.hero.visible h1,
+.hero.visible p,
+.hero.visible .btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hero h1 { font-size:3.5em; margin:0; text-shadow: 2px 2px 12px rgba(0,0,0,0.7);}
+.hero p { font-size:1.5em; margin-top:15px; }
+
+/* Buttons with shine */
+.btn, .btn-general {
+  margin-top:20px;
+  padding:16px 32px;
+  font-weight:700;
+  border-radius:30px;
+  background: linear-gradient(135deg,#1e3a5f,#2c5282);
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.btn:hover, .btn-general:hover { background: linear-gradient(135deg,#2c5282,#1e3a5f); }
+.btn::after, .btn-general::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background: rgba(255,255,255,0.2);
+  transform: skewX(-20deg);
+  transition: all 0.5s;
+}
+.btn:hover::after, .btn-general:hover::after { left:100%; }
+
+/* SECTIONS */
+.section {
+  max-width:1000px;
+  margin:auto;
+  padding:60px 20px;
+  background:#ffffff;
+  border-radius:12px;
+  margin-bottom:40px;
+  opacity:0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+.section.visible { opacity:1; transform: translateY(0); }
+.section h2 { 
+  text-align:center; 
+  color:#1e3a5f; 
+  margin-bottom:30px; 
+  font-weight:700; 
+  font-size:2em;
+}
+.section h2 i {
+  display:inline-block;
+  opacity:0;
+  transform: translateY(-20px);
+  transition: all 0.6s ease-out;
+}
+.section.visible h2 i { opacity:1; transform: translateY(0); }
+
+/* CARDS */
+.card {
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 12px 25px rgba(0,0,0,0.1);
+  margin-bottom:30px;
+  transition:0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+
+/* SOCIAL SIDEBAR */
+.social-sidebar {
+  position: fixed;
+  left:0;
+  top:50%;
+  transform: translateY(-50%);
+  display:flex;
+  flex-direction: column;
+  z-index:1000;
+}
+.social-sidebar a {
+  margin:5px 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:80px;
+  height:35px;
+  background:white;
+  border-radius:0 8px 8px 0;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  transition:0.3s;
+}
+.social-sidebar a img {
+  width:100px;
+  height:40px;
+  transition: transform 0.3s, filter 0.3s;
+}
+.social-sidebar a:hover img {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+/* FORM */
+form input, form textarea {
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+form button {
+  padding:14px 28px;
+  border:none;
+  border-radius:30px;
+  background: linear-gradient(135deg,#1e3a5f,#2c5282);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+form button:hover { background: linear-gradient(135deg,#2c5282,#1e3a5f); }
+
+/* MAP */
+.map-container {
+  margin-top:40px;
+  text-align:center;
+}
+iframe {
+  width:100%;
+  height:400px;
+  border:0;
+  border-radius:12px;
+}
+
+/* GALLERY */
+.gallery {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+}
+.gallery img {
+  width:250px;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  transition:0.3s;
+  cursor:pointer;
+}
+.gallery img:hover { transform: scale(1.05); }
+
+/* LIGHTBOX */
+#lightbox {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+#lightbox img {
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
+}
+
+/* FOOTER */
+footer {
+  background:#1e3a5f;
+  color:white;
+  text-align:center;
+  padding:25px;
+  font-size:0.9em;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .hero h1 { font-size:2.2em; }
+  .hero p { font-size:1.1em; }
+  nav { flex-direction:column; }
+  .gallery img { width:100%; max-width:300px; }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Social Media Sidebar -->
+<div class="social-sidebar">
+    <a href="https://www.facebook.com/YourChurchPage" target="_blank">
+      <img src="facebook.png" alt="Facebook">
+    </a>
+    <a href="https://www.youtube.com/channel/YourChurchChannel" target="_blank">
+      <img src="youtube.png" alt="YouTube">
+    </a>
+  </div>
+<nav>
+  <div><strong>Iglesia Pentecostal El Jordán</strong></div>
+  <div>
+    <a href="#servicios">Servicios</a>
+    <a href="#mision">Misión</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#prayer">Oración</a>
+    <a href="#ofrenda">Ofrenda</a>
+    <a href="#photos">Fotos</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Bienvenido a Iglesia Pentecostal El Jordán</h1>
+  <p>Fe, esperanza y comunidad para todos</p>
+  <a href="#contacto" class="btn">Contáctanos</a>
+</section>
+
+<section id="servicios" class="section">
+  <h2><i class="fas fa-church"></i>Servicios y Horarios</h2>
+  <div class="card">
+    <p>📅 <strong>Domingo:</strong> 11:00 AM</p>
+    <p>📅 <strong>Martes:</strong> 7:00 PM – Oración</p>
+    <p>📅 <strong>Jueves:</strong> 7:00 PM – Estudio Bíblico</p>
+    <a href="#contacto" class="btn-general">Visítanos</a>
+  </div>
+</section>
+
+<section id="mision" class="section">
+  <h2><i class="fas fa-bullseye"></i>Nuestra Misión</h2>
+  <div class="card">
+    <p>Guiados por el Espíritu Santo, predicamos el evangelio, edificamos vidas y servimos a nuestra comunidad con amor y esperanza.</p>
+  </div>
+</section>
+
+<section id="contacto" class="section">
+  <h2><i class="fas fa-envelope"></i>Contacto</h2>
+  <div class="card">
+    <p>📍 Dirección: Calle Principal #123, Tu Ciudad, MD</p>
+    <p>📞 Teléfono: +1 (555) 123‑4567</p>
+    <p>📧 Email: iglesia@eljordan.org</p>
+    <a href="mailto:iglesia@eljordan.org" class="btn-general">Escríbenos</a>
+  </div>
+</section>
+
+<section id="prayer" class="section">
+  <h2><i class="fas fa-praying-hands"></i>Solicitud de Oración</h2>
+  <div class="card">
+    <form>
+      <input type="text" placeholder="Nombre" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <textarea placeholder="Escribe tu petición de oración" rows="5" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</section>
+
+<section id="ofrenda" class="section">
+  <h2><i class="fas fa-hand-holding-usd"></i>Ofrenda en Línea</h2>
+  <div class="card" style="text-align:center;">
+    <p>Apoya nuestra iglesia y ministerios desde cualquier lugar.</p>
+    <a href="#" class="btn-general">Dar Ahora</a>
+  </div>
+</section>
+
+<section id="photos" class="section">
+  <h2><i class="fas fa-camera"></i>Fotos de la Iglesia</h2>
+  <div class="gallery">
+    <img src="photo1.jpg" alt="Foto Iglesia 1">
+    <img src="photo2.jpg" alt="Foto Iglesia 2">
+    <img src="photo3.jpg" alt="Foto Iglesia 3">
+    <img src="photo4.jpg" alt="Foto Iglesia 4">
+  </div>
+</section>
+
+<section class="map-container section">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.769285303892!2d-122.08424968469227!3d37.422065979825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb0b3e1680f1b%3A0x62b65b1b41b4dcd6!2sGoogleplex!5e0!3m2!1ses!2sus!4v1593071022361!5m2!1ses!2sus" allowfullscreen="" loading="lazy"></iframe>
+</section>
+
+<footer>
+  © 2025 Iglesia Pentecostal El Jordán
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox"><img src=""></div>
+
+<script>
+// Hero animation on load
+window.addEventListener('load', () => {
+  document.querySelector('.hero').classList.add('visible');
+});
+
+// Scroll animation for sections
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.2 });
+sections.forEach(section => observer.observe(section));
+
+// Gallery lightbox
+const galleryImages = document.querySelectorAll('.gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox.querySelector('img');
+
+galleryImages.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+  });
+});
+
+lightbox.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+</script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("service-worker.js")
+      .then(() => {
+        console.log("Service Worker Registered");
+      });
+  }
+</script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("service-worker.js")
+      .then(() => console.log("Service Worker Registered"));
+  }
+</script>
+
+</body>
+<div class="social-sidebar">
+    <a href="https://www.facebook.com/YourChurchPage" target="_blank">
+      <img src="facebook.png" alt="Facebook">
+    </a>
+    <a href="https://www.youtube.com/channel/YourChurchChannel" target="_blank">
+      <img src="youtube.png" alt="YouTube">
+    </a>
+  </div>
+  
