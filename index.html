@@ -1,408 +1,775 @@
 <!DOCTYPE html>
-<html lang="es">
-<head><link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0a3d62">
-  
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iglesia Pentecostal El Jordán </title>
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-body {
-  margin:0;
-  font-family: 'Poppins', sans-serif;
-  scroll-behavior: smooth;
-  background: #f4f4f4;
-}
-
-/* NAVIGATION */
-nav {
-  position: sticky;
-  top:0;
-  background: rgba(30,58,95,0.95);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  z-index: 100;
-}
-nav a {
-  color:white;
-  margin:0 15px;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.3s;
-}
-nav a:hover { opacity:0.8; }
-
-/* HERO */
-.hero {
-  height: 100vh;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero.jpg') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-  flex-direction: column;
-}
-.hero h1, .hero p, .hero .btn {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease-out;
-}
-.hero.visible h1,
-.hero.visible p,
-.hero.visible .btn {
-  opacity: 1;
-  transform: translateY(0);
-}
-.hero h1 { font-size:3.5em; margin:0; text-shadow: 2px 2px 12px rgba(0,0,0,0.7);}
-.hero p { font-size:1.5em; margin-top:15px; }
-
-/* Buttons with shine */
-.btn, .btn-general {
-  margin-top:20px;
-  padding:16px 32px;
-  font-weight:700;
-  border-radius:30px;
-  background: linear-gradient(135deg,#1e3a5f,#2c5282);
-  text-decoration:none;
-  color:white;
-  transition:0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.btn:hover, .btn-general:hover { background: linear-gradient(135deg,#2c5282,#1e3a5f); }
-.btn::after, .btn-general::after {
-  content:"";
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background: rgba(255,255,255,0.2);
-  transform: skewX(-20deg);
-  transition: all 0.5s;
-}
-.btn:hover::after, .btn-general:hover::after { left:100%; }
-
-/* SECTIONS */
-.section {
-  max-width:1000px;
-  margin:auto;
-  padding:60px 20px;
-  background:#ffffff;
-  border-radius:12px;
-  margin-bottom:40px;
-  opacity:0;
-  transform: translateY(40px);
-  transition: all 0.8s ease-out;
-}
-.section.visible { opacity:1; transform: translateY(0); }
-.section h2 { 
-  text-align:center; 
-  color:#1e3a5f; 
-  margin-bottom:30px; 
-  font-weight:700; 
-  font-size:2em;
-}
-.section h2 i {
-  display:inline-block;
-  opacity:0;
-  transform: translateY(-20px);
-  transition: all 0.6s ease-out;
-}
-.section.visible h2 i { opacity:1; transform: translateY(0); }
-
-/* CARDS */
-.card {
-  background:white;
-  padding:30px;
-  border-radius:12px;
-  box-shadow:0 12px 25px rgba(0,0,0,0.1);
-  margin-bottom:30px;
-  transition:0.3s;
-}
-.card:hover { transform: translateY(-5px); }
-
-/* SOCIAL SIDEBAR */
-.social-sidebar {
-  position: fixed;
-  left:0;
-  top:50%;
-  transform: translateY(-50%);
-  display:flex;
-  flex-direction: column;
-  z-index:1000;
-}
-.social-sidebar a {
-  margin:5px 0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:80px;
-  height:35px;
-  background:white;
-  border-radius:0 8px 8px 0;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2);
-  transition:0.3s;
-}
-.social-sidebar a img {
-  width:100px;
-  height:40px;
-  transition: transform 0.3s, filter 0.3s;
-}
-.social-sidebar a:hover img {
-  transform: scale(1.2);
-  filter: brightness(1.2);
-}
-
-/* FORM */
-form input, form textarea {
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:8px;
-  border:1px solid #ccc;
-  font-size:16px;
-}
-form button {
-  padding:14px 28px;
-  border:none;
-  border-radius:30px;
-  background: linear-gradient(135deg,#1e3a5f,#2c5282);
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-  transition:0.3s;
-}
-form button:hover { background: linear-gradient(135deg,#2c5282,#1e3a5f); }
-
-/* MAP */
-.map-container {
-  margin-top:40px;
-  text-align:center;
-}
-iframe {
-  width:100%;
-  height:400px;
-  border:0;
-  border-radius:12px;
-}
-
-/* GALLERY */
-.gallery {
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  justify-content:center;
-}
-.gallery img {
-  width:250px;
-  border-radius:12px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.1);
-  transition:0.3s;
-  cursor:pointer;
-}
-.gallery img:hover { transform: scale(1.05); }
-
-/* LIGHTBOX */
-#lightbox {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.8);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-}
-#lightbox img {
-  max-width:90%;
-  max-height:90%;
-  border-radius:12px;
-}
-
-/* FOOTER */
-footer {
-  background:#1e3a5f;
-  color:white;
-  text-align:center;
-  padding:25px;
-  font-size:0.9em;
-}
-
-/* RESPONSIVE */
-@media(max-width:600px){
-  .hero h1 { font-size:2.2em; }
-  .hero p { font-size:1.1em; }
-  nav { flex-direction:column; }
-  .gallery img { width:100%; max-width:300px; }
-}.social-sidebar a {
-  cursor: pointer;
-}
-
-.social-sidebar a img {
-  pointer-events: none;
-}
-
-</style>
-
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Iglesia Pentecostal El Jordan - Un lugar de encuentro con Dios en Baltimore, MD">
+    <title>Iglesia Pentecostal El Jordán | Baltimore, MD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary:   { DEFAULT:'#8B2635', dark:'#6E1E2A', light:'#A83345' },
+                        gold:      { DEFAULT:'#C9A84C', light:'#E2C97A', dark:'#A88B32' },
+                        navy:      { DEFAULT:'#1B2A4A', light:'#2A3D66' },
+                        cream:     { DEFAULT:'#FEFCF8', dark:'#F5EFE3' },
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"','serif'],
+                        sans:  ['Inter','sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif}
+        ::-webkit-scrollbar{width:7px}
+        ::-webkit-scrollbar-track{background:#F5EFE3}
+        ::-webkit-scrollbar-thumb{background:#C9A84C;border-radius:4px}
+        ::-webkit-scrollbar-thumb:hover{background:#A88B32}
+        .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+        .reveal.active{opacity:1;transform:translateY(0)}
+        .reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}
+        .reveal-d4{transition-delay:.4s}.reveal-d5{transition-delay:.5s}.reveal-d6{transition-delay:.6s}
+        .reveal-d7{transition-delay:.7s}.reveal-d8{transition-delay:.8s}.reveal-d9{transition-delay:.9s}
+        @keyframes heroShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        .hero-bg{background:linear-gradient(135deg,#1B2A4A 0%,#8B2635 40%,#1B2A4A 70%,#6E1E2A 100%);background-size:300% 300%;animation:heroShimmer 18s ease infinite}
+        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+        .scroll-bounce{animation:bounce 2s ease infinite}
+        #navbar{transition:background .3s,box-shadow .3s,backdrop-filter .3s}
+        #navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 4px rgba(0,0,0,.07)}
+        #navbar.scrolled .nav-link{color:#4B5563}
+        #navbar.scrolled .nav-link:hover{color:#8B2635}
+        #navbar.scrolled .nav-logo{color:#1B2A4A}
+        #navbar.scrolled .nav-btn{color:#1B2A4A}
+        #navbar:not(.scrolled) .nav-link{color:rgba(255,255,255,.8)}
+        #navbar:not(.scrolled) .nav-link:hover{color:#C9A84C}
+        #navbar:not(.scrolled) .nav-logo{color:#fff}
+        #navbar:not(.scrolled) .nav-btn{color:#fff}
+        #mobile-overlay{transition:opacity .3s}
+        #mobile-overlay.hidden{opacity:0;pointer-events:none}
+        #mobile-panel{transition:transform .3s cubic-bezier(.16,1,.3,1)}
+        #mobile-overlay.hidden #mobile-panel{transform:translateX(100%)}
+        #mobile-overlay:not(.hidden) #mobile-panel{transform:translateX(0)}
+        .gallery-item img{transition:transform .5s cubic-bezier(.16,1,.3,1)}
+        .gallery-item:hover img{transform:scale(1.07)}
+        #lightbox{transition:opacity .3s}
+        #lightbox.hidden{opacity:0;pointer-events:none}
+        #lightbox:not(.hidden){opacity:1}
+        #toast{transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
+        #toast.hidden{transform:translateY(100px);opacity:0}
+        #toast:not(.hidden){transform:translateY(0);opacity:1}
+        #back-top{transition:opacity .3s,transform .3s}
+        #back-top.hidden{opacity:0;transform:translateY(16px);pointer-events:none}
+        #back-top:not(.hidden){opacity:1;transform:translateY(0)}
+        .divider{width:56px;height:3px;background:linear-gradient(to right,#C9A84C,#E2C97A);border-radius:2px}
+        .aspect-card{aspect-ratio:3/2}
+        .schedule-card{transition:all .3s ease}
+        .schedule-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(139,38,53,.1)}
+        .schedule-card.today{border-color:#C9A84C;box-shadow:0 0 0 2px rgba(201,168,76,.25),0 8px 24px rgba(201,168,76,.12)}
+        .schedule-card.today .today-dot{display:flex}
+        @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+        .today-dot{animation:pulse-dot 2s ease infinite}
+        .admin-row{transition:background .2s}
+        .admin-row:hover{background:rgba(139,38,53,.04)}
+        .spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite}
+        .spinner-dark{border-color:rgba(27,42,74,.15);border-top-color:#1B2A4A}
+        @keyframes spin{to{transform:rotate(360deg)}}
+    </style>
 </head>
+<body class="bg-cream text-gray-800 antialiased">
 
-<body>
-
-<!-- Social Media Sidebar -->
-<div class="social-sidebar">
-    <a href="https://www.facebook.com/YourChurchPage" target="_blank">
-      <img src="facebook.png" alt="Facebook">
-      <a 
-      <a href="https://www.youtube.com/@iglesiapentecostaleljordaninc">
-        <img src="icons/youtube.png" alt="YouTube">
-      </a>
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 md:h-20">
+            <a href="#inicio" class="nav-logo flex items-center gap-2 transition-colors">
+                <span class="iconify text-gold text-2xl" data-icon="mdi:church"></span>
+                <span class="font-serif font-bold text-lg md:text-xl tracking-tight">El Jordán</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#inicio"    class="nav-link text-sm font-medium transition-colors">Inicio</a>
+                <a href="#sermones"  class="nav-link text-sm font-medium transition-colors">Sermones</a>
+                <a href="#galeria"   class="nav-link text-sm font-medium transition-colors">Galería</a>
+                <a href="#oracion"   class="nav-link text-sm font-medium transition-colors">Oración</a>
+                <a href="#horarios"  class="nav-link text-sm font-medium transition-colors">Horarios</a>
+                <a href="#ubicacion" class="nav-link text-sm font-medium transition-colors">Ubicación</a>
+            </div>
+            <button id="menu-btn" class="nav-btn md:hidden p-2 transition-colors" aria-label="Abrir menú">
+                <span class="iconify text-2xl" data-icon="mdi:menu"></span>
+            </button>
+        </div>
     </div>
-      </a>
-      
-  </div>
-<nav>
-  <div><strong>Iglesia Pentecostal El Jordán </strong></div>
-  <div>
-    <a href="#servicios">Servicios</a>
-    <a href="#mision">Misión</a>
-    <a href="#contacto">Contacto</a>
-    <a href="#prayer">Oración</a>
-    <a href="#ofrenda">Ofrenda</a>
-    <a href="#photos">Fotos</a>
-  </div>
 </nav>
 
-<section class="hero">
-  <h1>Bienvenido a Iglesia Pentecostal El Jordán</h1>
-  <p>Fe, esperanza y comunidad para todos</p>
-  <a href="#contacto" class="btn">Contáctanos</a>
+<div id="mobile-overlay" class="fixed inset-0 z-[60] hidden">
+    <div class="absolute inset-0 bg-black/50" id="mobile-backdrop"></div>
+    <div id="mobile-panel" class="absolute right-0 top-0 bottom-0 w-72 bg-navy shadow-2xl flex flex-col">
+        <div class="flex items-center justify-between p-5 border-b border-white/10">
+            <span class="font-serif font-bold text-white text-lg">El Jordán</span>
+            <button id="menu-close" class="text-white/70 hover:text-white p-1" aria-label="Cerrar menú">
+                <span class="iconify text-2xl" data-icon="mdi:close"></span>
+            </button>
+        </div>
+        <div class="p-4 flex flex-col gap-1 flex-1">
+            <a href="#inicio"    class="mob-link text-white/80 hover:text-gold hover:bg-white/5 px-4 py-3 rounded-lg transition-all font-medium">Inicio</a>
+            <a href="#sermones"  class="mob-link text-white/80 hover:text-gold hover:bg-white/5 px-4 py-3 rounded-lg transition-all font-medium">Sermones</a>
+            <a href="#galeria"   class="mob-link text-white/80 hover:text-gold hover:bg-white/5 px-4 py-3 rounded-lg transition-all font-medium">Galería</a>
+            <a href="#oracion"   class="mob-link text-white/80 hover:text-gold hover:bg-white/5 px-4 py-3 rounded-lg transition-all font-medium">Oración</a>
+            <a href="#horarios"  class="mob-link text-white/80 hover:text-gold hover:bg-white/5 px-4 py-3 rounded-lg transition-all font-medium">Horarios</a>
+            <a href="#ubicacion" class="mob-link text-white/80 hover:text-gold hover:bg-white/5 px-4 py-3 rounded-lg transition-all font-medium">Ubicación</a>
+        </div>
+        <div class="p-5 border-t border-white/10 flex items-center gap-4">
+            <a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" class="text-white/60 hover:text-gold transition-colors"><span class="iconify text-xl" data-icon="mdi:facebook"></span></a>
+            <a href="https://m.youtube.com/channel/UCHr-iyxaluoGXq_wykYQCtA" target="_blank" class="text-white/60 hover:text-gold transition-colors"><span class="iconify text-xl" data-icon="mdi:youtube"></span></a>
+        </div>
+    </div>
+</div>
+
+<section id="inicio" class="hero-bg relative min-h-screen flex items-center justify-center overflow-hidden">
+    <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[360px] md:h-[360px] opacity-[0.04] pointer-events-none" viewBox="0 0 100 100" fill="none">
+        <rect x="42" y="8" width="16" height="84" rx="2" fill="white"/>
+        <rect x="22" y="28" width="56" height="16" rx="2" fill="white"/>
+    </svg>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
+    <div class="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
+        <div class="reveal">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/30 bg-gold/10 mb-8">
+                <span class="iconify text-gold text-sm" data-icon="mdi:map-marker"></span>
+                <span class="text-gold text-sm font-medium">Baltimore, Maryland</span>
+            </div>
+        </div>
+        <h1 class="reveal reveal-d1 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
+            Iglesia Pentecostal<br><span class="text-gold">El Jordán</span>
+        </h1>
+        <p class="reveal reveal-d2 text-white/75 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
+            Un lugar de encuentro con Dios, donde la fe se fortalece y la comunidad se une en amor y alabanza.
+        </p>
+        <p class="reveal reveal-d3 text-white/50 text-sm max-w-xl mx-auto mb-10 italic font-serif">
+            "Porque donde están dos o tres congregados en mi nombre, allí estoy yo en medio de ellos."
+            <span class="block mt-1 text-gold/60 not-italic text-xs font-sans">— Mateo 18:20</span>
+        </p>
+        <div class="reveal reveal-d4 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer"
+               class="flex items-center gap-3 px-6 py-3 bg-[#1877F2] hover:bg-[#166FE5] text-white rounded-xl font-medium text-sm transition-all hover:scale-[1.03] hover:shadow-lg hover:shadow-[#1877F2]/25">
+                <span class="iconify text-xl" data-icon="mdi:facebook"></span>
+                Síguenos en Facebook
+            </a>
+            <a href="https://m.youtube.com/channel/UCHr-iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer"
+               class="flex items-center gap-3 px-6 py-3 bg-[#FF0000] hover:bg-[#CC0000] text-white rounded-xl font-medium text-sm transition-all hover:scale-[1.03] hover:shadow-lg hover:shadow-[#FF0000]/25">
+                <span class="iconify text-xl" data-icon="mdi:youtube"></span>
+                Mira nuestros videos
+            </a>
+        </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-bounce">
+        <a href="#sermones" class="text-white/40 hover:text-gold transition-colors">
+            <span class="iconify text-3xl" data-icon="mdi:chevron-double-down"></span>
+        </a>
+    </div>
 </section>
 
-<section id="servicios" class="section">
-  <h2><i class="fas fa-church"></i>Servicios y Horarios</h2>
-  <div class="card">
-    <p>📅 <strong>Domingo:</strong> 11:00 AM</p>
-    <p>📅 <strong>Martes:</strong> 7:00 PM – Oración</p>
-    <p>📅 <strong>Jueves:</strong> 7:00 PM – Estudio Bíblico</p>
-    <a href="#contacto" class="btn-general">Visítanos</a>
-  </div>
+<section id="sermones" class="py-20 md:py-28 bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
+                <span class="iconify" data-icon="mdi:book-open-page-variant"></span>
+                Palabra de Dios
+            </div>
+            <h2 class="reveal reveal-d1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Sermones Recientes</h2>
+            <div class="reveal reveal-d2 divider mx-auto mb-6"></div>
+            <p class="reveal reveal-d2 text-gray-500 max-w-lg mx-auto text-sm">Alimentación espiritual para tu vida diaria. <em class="text-gray-400">(Ejemplos — reemplazar con contenido real)</em></p>
+        </div>
+        <div id="sermones-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
 </section>
 
-<section id="mision" class="section">
-  <h2><i class="fas fa-bullseye"></i>Nuestra Misión</h2>
-  <div class="card">
-    <p>Guiados por el Espíritu Santo, predicamos el evangelio, edificamos vidas y servimos a nuestra comunidad con amor y esperanza.</p>
-  </div>
+<section id="galeria" class="py-20 md:py-28 bg-cream-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/15 text-gold-dark text-xs font-semibold uppercase tracking-wider mb-4">
+                <span class="iconify" data-icon="mdi:image-multiple"></span>
+                Momentos Especiales
+            </div>
+            <h2 class="reveal reveal-d1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Nuestra Galería</h2>
+            <div class="reveal reveal-d2 divider mx-auto mb-6"></div>
+            <p class="reveal reveal-d2 text-gray-500 max-w-lg mx-auto text-sm">Imágenes de nuestra comunidad en alabanza y adoración.</p>
+        </div>
+        <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"></div>
+    </div>
 </section>
 
-<section id="contacto" class="section">
-  <h2><i class="fas fa-envelope"></i>Contacto</h2>
-  <div class="card">
-    <p>📍 Dirección: 7834 Eastern Ave, Baltimore, MD 21224</p>
-    <p>📞 Teléfono: (410) 732-0793</p>
-    <p>📧 Email: iglesia@eljordan.org</p>
-    <a href="mailto:iglesia@eljordan.org" class="btn-general">Escríbenos</a>
-  </div>
+<section id="oracion" class="py-20 md:py-28 bg-cream">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <div class="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
+                <span class="iconify" data-icon="mdi:hands-pray"></span>
+                Comunidad de Fe
+            </div>
+            <h2 class="reveal reveal-d1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Peticiones de Oración</h2>
+            <div class="reveal reveal-d2 divider mx-auto mb-6"></div>
+            <p class="reveal reveal-d2 text-gray-500 max-w-lg mx-auto text-sm">Comparte tu petición y nuestra comunidad intercederá por ti en privado. Tu nombre es opcional.</p>
+        </div>
+        <div class="reveal reveal-d3">
+            <form id="prayer-form" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+                <div class="mb-5">
+                    <label for="prayer-name" class="block text-sm font-medium text-gray-700 mb-2">Nombre <span class="text-gray-400 font-normal">(opcional)</span></label>
+                    <input type="text" id="prayer-name" maxlength="50" placeholder="Tu nombre"
+                           class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm">
+                </div>
+                <div class="mb-5">
+                    <label for="prayer-text" class="block text-sm font-medium text-gray-700 mb-2">Tu petición <span class="text-primary">*</span></label>
+                    <textarea id="prayer-text" rows="5" maxlength="500" required
+                              placeholder="Escribe tu petición de oración..."
+                              class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm resize-none"></textarea>
+                    <div class="flex justify-end mt-1">
+                        <span id="char-count" class="text-xs text-gray-400">0 / 500</span>
+                    </div>
+                </div>
+                <button type="submit" id="prayer-submit-btn" class="w-full py-3 px-6 bg-primary hover:bg-primary-dark text-white rounded-xl font-medium text-sm transition-all hover:shadow-lg hover:shadow-primary/25 flex items-center justify-center gap-2">
+                    <span class="iconify" data-icon="mdi:send"></span>
+                    Enviar Petición
+                </button>
+                <p id="form-error" class="hidden mt-3 text-sm text-red-500 text-center"></p>
+            </form>
+            <p class="text-center text-xs text-gray-400 mt-5">
+                <span class="iconify inline-block -mt-0.5 mr-1" data-icon="mdi:lock-outline"></span>
+                Tu petición es privada y solo será vista por los líderes de la iglesia.
+            </p>
+        </div>
+    </div>
 </section>
 
-<section id="prayer" class="section">
-  <h2><i class="fas fa-praying-hands"></i>Solicitud de Oración</h2>
-  <div class="card">
-    <form>
-      <input type="text" placeholder="Nombre" required>
-      <input type="email" placeholder="Correo electrónico" required>
-      <textarea placeholder="Escribe tu petición de oración" rows="5" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
+<section id="horarios" class="py-20 md:py-28 bg-cream-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
+                <span class="iconify" data-icon="mdi:clock-outline"></span>
+                Jornadas de Fe
+            </div>
+            <h2 class="reveal reveal-d1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Horarios de Culto</h2>
+            <div class="reveal reveal-d2 divider mx-auto mb-6"></div>
+            <p class="reveal reveal-d2 text-gray-500 max-w-lg mx-auto text-sm">Te invitamos a unirte a nosotros en estos días de alabanza y enseñanza de la Palabra de Dios.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="schedule-card reveal reveal-d1 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 text-center relative" data-day="2">
+                <div class="today-dot hidden absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gold"></div>
+                <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <span class="iconify text-primary text-2xl" data-icon="mdi:calendar-week-begin"></span>
+                </div>
+                <h3 class="font-serif text-xl font-semibold text-navy mb-3">Martes</h3>
+                <div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl">
+                    <span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span>
+                    <span class="font-semibold text-navy text-xl tracking-wide">7:30 <span class="text-sm font-medium text-gray-500">PM</span></span>
+                </div>
+            </div>
+            <div class="schedule-card reveal reveal-d2 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 text-center relative" data-day="5">
+                <div class="today-dot hidden absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gold"></div>
+                <div class="w-14 h-14 rounded-2xl bg-gold/15 flex items-center justify-center mx-auto mb-4">
+                    <span class="iconify text-gold-dark text-2xl" data-icon="mdi:bible"></span>
+                </div>
+                <h3 class="font-serif text-xl font-semibold text-navy mb-3">Viernes</h3>
+                <div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl">
+                    <span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span>
+                    <span class="font-semibold text-navy text-xl tracking-wide">7:30 <span class="text-sm font-medium text-gray-500">PM</span></span>
+                </div>
+            </div>
+            <div class="schedule-card reveal reveal-d3 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 text-center relative" data-day="6">
+                <div class="today-dot hidden absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gold"></div>
+                <div class="w-14 h-14 rounded-2xl bg-navy/10 flex items-center justify-center mx-auto mb-4">
+                    <span class="iconify text-navy text-2xl" data-icon="mdi:hands-pray"></span>
+                </div>
+                <h3 class="font-serif text-xl font-semibold text-navy mb-3">Sábado</h3>
+                <div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl">
+                    <span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span>
+                    <span class="font-semibold text-navy text-xl tracking-wide">7:30 <span class="text-sm font-medium text-gray-500">PM</span></span>
+                </div>
+            </div>
+            <div class="schedule-card reveal reveal-d4 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 text-center relative" data-day="0">
+                <div class="today-dot hidden absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gold"></div>
+                <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <span class="iconify text-primary text-2xl" data-icon="mdi:cross"></span>
+                </div>
+                <h3 class="font-serif text-xl font-semibold text-navy mb-3">Domingo</h3>
+                <div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl">
+                    <span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span>
+                    <span class="font-semibold text-navy text-xl tracking-wide">6:00 <span class="text-sm font-medium text-gray-500">PM</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="reveal reveal-d5 mt-10 bg-navy rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center shrink-0">
+                    <span class="iconify text-gold text-2xl" data-icon="mdi:heart-multiple"></span>
+                </div>
+                <div>
+                    <p class="text-white font-serif font-semibold">¡Siempre hay un lugar para ti!</p>
+                    <p class="text-white/50 text-sm mt-0.5">Ven como estás. Te esperamos con los brazos abiertos.</p>
+                </div>
+            </div>
+            <a href="https://maps.google.com/?q=7834+Eastern+Ave+Baltimore+MD+21224" target="_blank" rel="noopener noreferrer"
+               class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-gold hover:bg-gold-dark text-navy rounded-xl font-medium text-sm transition-all hover:shadow-lg hover:shadow-gold/25">
+                <span class="iconify" data-icon="mdi:navigation"></span>
+                Cómo Llegar
+            </a>
+        </div>
+    </div>
 </section>
 
-<section id="ofrenda" class="section">
-  <h2><i class="fas fa-hand-holding-usd"></i>Ofrenda en Línea</h2>
-  <div class="card" style="text-align:center;">
-    <p>Apoya nuestra iglesia y ministerios desde cualquier lugar.</p>
-    <a href="#" class="btn-general">Dar Ahora</a>
-  </div>
+<section id="ubicacion" class="py-20 md:py-28 bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/15 text-gold-dark text-xs font-semibold uppercase tracking-wider mb-4">
+                <span class="iconify" data-icon="mdi:map-marker-radius"></span>
+                Visítanos
+            </div>
+            <h2 class="reveal reveal-d1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Nuestra Ubicación</h2>
+            <div class="reveal reveal-d2 divider mx-auto mb-6"></div>
+            <p class="reveal reveal-d2 text-gray-500 max-w-lg mx-auto text-sm">Te esperamos con los brazos abiertos. ¡Ven y adora con nosotros!</p>
+        </div>
+        <div class="grid lg:grid-cols-5 gap-8">
+            <div class="lg:col-span-2 reveal">
+                <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                            <span class="iconify text-primary text-xl" data-icon="mdi:map-marker"></span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-navy text-sm mb-1">Dirección</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">7834 Eastern Ave,<br>Baltimore, MD,<br>United States, Maryland</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-gold/15 flex items-center justify-center shrink-0">
+                            <span class="iconify text-gold-dark text-xl" data-icon="mdi:phone"></span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-navy text-sm mb-1">Teléfono</h4>
+                            <a href="tel:+14103717241" class="text-gray-500 hover:text-primary text-sm transition-colors">(410) 371-7241</a>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center shrink-0">
+                            <span class="iconify text-navy text-xl" data-icon="mdi:share-variant"></span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-navy text-sm mb-1">Redes Sociales</h4>
+                            <div class="flex gap-3 mt-1">
+                                <a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#1877F2]/10 hover:bg-[#1877F2]/20 flex items-center justify-center transition-colors">
+                                    <span class="iconify text-[#1877F2] text-sm" data-icon="mdi:facebook"></span>
+                                </a>
+                                <a href="https://m.youtube.com/channel/UCHr-iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#FF0000]/10 hover:bg-[#FF0000]/20 flex items-center justify-center transition-colors">
+                                    <span class="iconify text-[#FF0000] text-sm" data-icon="mdi:youtube"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=7834+Eastern+Ave+Baltimore+MD+21224" target="_blank" rel="noopener noreferrer"
+                       class="block w-full py-3 px-6 bg-navy hover:bg-navy-light text-white rounded-xl font-medium text-sm transition-all hover:shadow-lg text-center">
+                        <span class="iconify inline-block mr-1 -mt-0.5" data-icon="mdi:navigation"></span>
+                        Cómo Llegar
+                    </a>
+                </div>
+            </div>
+            <div class="lg:col-span-3 reveal reveal-d2">
+                <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100 h-[350px] md:h-full min-h-[350px] bg-gray-100">
+                    <iframe src="https://maps.google.com/maps?q=7834+Eastern+Ave,+Baltimore,+MD+21224&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        width="100%" height="100%" style="border:0;min-height:350px" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Ubicación de Iglesia Pentecostal El Jordan"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="photos" class="section">
-  <h2><i class="fas fa-camera"></i>Fotos de la Iglesia</h2>
-  <div class="gallery">
-    <img src="photo1.jpg" alt="Foto Iglesia 1">
-    <img src="photo2.jpg" alt="Foto Iglesia 2">
-    <img src="photo3.jpg" alt="Foto Iglesia 3">
-    <img src="photo4.jpg" alt="Foto Iglesia 4">
-  </div>
-</section>
-
-<section class="map-container section">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.769285303892!2d-122.08424968469227!3d37.422065979825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb0b3e1680f1b%3A0x62b65b1b41b4dcd6!2sGoogleplex!5e0!3m2!1ses!2sus!4v1593071022361!5m2!1ses!2sus" allowfullscreen="" loading="lazy"></iframe>
-</section>
-
-<footer>
-  © 2025 Iglesia Pentecostal El Jordán
+<footer class="bg-navy text-white/70">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div class="grid md:grid-cols-3 gap-10">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="iconify text-gold text-2xl" data-icon="mdi:church"></span>
+                    <span class="font-serif font-bold text-white text-lg">Iglesia Pentecostal El Jordán</span>
+                </div>
+                <p class="text-sm leading-relaxed text-white/50 mb-5">Un lugar de encuentro con Dios, donde la fe se fortalece y la comunidad se une en amor y alabanza.</p>
+                <div class="flex gap-3">
+                    <a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#1877F2]/20 hover:text-[#1877F2] flex items-center justify-center transition-all"><span class="iconify text-lg" data-icon="mdi:facebook"></span></a>
+                    <a href="https://m.youtube.com/channel/UCHr-iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#FF0000]/20 hover:text-[#FF0000] flex items-center justify-center transition-all"><span class="iconify text-lg" data-icon="mdi:youtube"></span></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white text-sm mb-4 uppercase tracking-wider">Enlaces</h4>
+                <ul class="space-y-2.5">
+                    <li><a href="#inicio"    class="text-sm hover:text-gold transition-colors">Inicio</a></li>
+                    <li><a href="#sermones"  class="text-sm hover:text-gold transition-colors">Sermones</a></li>
+                    <li><a href="#galeria"   class="text-sm hover:text-gold transition-colors">Galería</a></li>
+                    <li><a href="#oracion"   class="text-sm hover:text-gold transition-colors">Peticiones de Oración</a></li>
+                    <li><a href="#horarios"  class="text-sm hover:text-gold transition-colors">Horarios de Culto</a></li>
+                    <li><a href="#ubicacion" class="text-sm hover:text-gold transition-colors">Ubicación</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white text-sm mb-4 uppercase tracking-wider">Contacto</h4>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <span class="iconify text-gold mt-0.5 shrink-0" data-icon="mdi:map-marker"></span>
+                        <span class="text-sm">7834 Eastern Ave, Baltimore, MD</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="iconify text-gold shrink-0" data-icon="mdi:phone"></span>
+                        <a href="tel:+14103717241" class="text-sm hover:text-gold transition-colors">(410) 371-7241</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-white/40">&copy; <span id="year"></span> Iglesia Pentecostal El Jordán. Todos los derechos reservados.</p>
+            <p class="text-xs text-white/30">Hecho con <span class="text-primary-light">&#10084;</span> para la gloria de Dios</p>
+        </div>
+    </div>
 </footer>
 
-<!-- Lightbox -->
-<div id="lightbox"><img src=""></div>
+<div id="lightbox" class="fixed inset-0 z-[70] bg-black/90 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true">
+    <button id="lb-close" class="absolute top-4 right-4 text-white/60 hover:text-white transition-colors z-10 p-1" aria-label="Cerrar"><span class="iconify text-3xl" data-icon="mdi:close"></span></button>
+    <button id="lb-prev" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors z-10 p-1" aria-label="Anterior"><span class="iconify text-4xl" data-icon="mdi:chevron-left"></span></button>
+    <button id="lb-next" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors z-10 p-1" aria-label="Siguiente"><span class="iconify text-4xl" data-icon="mdi:chevron-right"></span></button>
+    <img id="lb-image" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded-lg select-none">
+</div>
+
+<div id="toast" class="fixed bottom-6 right-6 z-[80] hidden">
+    <div class="flex items-center gap-3 px-5 py-3 bg-navy text-white rounded-xl shadow-2xl text-sm">
+        <span class="iconify text-gold text-lg" data-icon="mdi:check-circle"></span>
+        <span id="toast-msg">Petición enviada</span>
+    </div>
+</div>
+
+<button id="back-top" class="hidden fixed bottom-6 left-6 z-50 w-10 h-10 bg-primary hover:bg-primary-dark text-white rounded-full shadow-lg flex items-center justify-center transition-all" aria-label="Volver arriba">
+    <span class="iconify text-lg" data-icon="mdi:chevron-up"></span>
+</button>
+
+<div id="admin-panel" class="hidden fixed inset-0 z-[90] bg-cream overflow-y-auto">
+    <div class="bg-navy text-white px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between sticky top-0 z-10 shadow-lg">
+        <div class="flex items-center gap-3">
+            <span class="iconify text-gold text-xl" data-icon="mdi:shield-lock"></span>
+            <div>
+                <h1 class="font-serif font-bold text-lg">Panel de Administración</h1>
+                <p class="text-white/50 text-xs">Peticiones de Oración — Solo visible para líderes</p>
+            </div>
+        </div>
+        <button id="admin-logout" class="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition-colors">
+            <span class="iconify" data-icon="mdi:logout"></span>
+            <span class="hidden sm:inline">Salir</span>
+        </button>
+    </div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-xl p-4 border border-gray-100 text-center">
+                <p class="text-2xl font-bold text-navy" id="stat-total">0</p>
+                <p class="text-xs text-gray-400 mt-1">Total</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 border border-gray-100 text-center">
+                <p class="text-2xl font-bold text-primary" id="stat-today">0</p>
+                <p class="text-xs text-gray-400 mt-1">Hoy</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 border border-gray-100 text-center">
+                <p class="text-2xl font-bold text-gold-dark" id="stat-week">0</p>
+                <p class="text-xs text-gray-400 mt-1">Esta Semana</p>
+            </div>
+            <div class="bg-white rounded-xl p-4 border border-gray-100 text-center">
+                <p class="text-2xl font-bold text-navy" id="stat-anon">0</p>
+                <p class="text-xs text-gray-400 mt-1">Anónimas</p>
+            </div>
+        </div>
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+                <h2 class="font-serif text-xl font-semibold text-navy">Todas las Peticiones</h2>
+                <button id="admin-refresh" class="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors" title="Actualizar">
+                    <span class="iconify text-gray-500 text-sm" data-icon="mdi:refresh"></span>
+                </button>
+            </div>
+            <button id="admin-delete-all" class="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg text-sm transition-colors border border-red-200">
+                <span class="iconify" data-icon="mdi:delete-sweep"></span>
+                Borrar Todo
+            </button>
+        </div>
+        <div id="admin-list" class="space-y-3"></div>
+        <div id="admin-loading" class="hidden text-center py-16">
+            <span class="spinner spinner-dark"></span>
+            <p class="text-sm text-gray-400 mt-3">Cargando peticiones...</p>
+        </div>
+        <div id="admin-empty" class="hidden text-center py-16 text-gray-400">
+            <span class="iconify text-5xl mb-3 block" data-icon="mdi:inbox-outline"></span>
+            <p class="text-sm">No hay peticiones de oración.</p>
+        </div>
+    </div>
+</div>
+
+<div id="login-modal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden">
+        <div class="bg-navy p-6 text-center">
+            <span class="iconify text-gold text-4xl block mb-3" data-icon="mdi:shield-lock"></span>
+            <h3 class="font-serif text-white font-bold text-lg">Acceso Restringido</h3>
+            <p class="text-white/50 text-sm mt-1">Solo para líderes de la iglesia</p>
+        </div>
+        <form id="login-form" class="p-6">
+            <div class="mb-4">
+                <label for="admin-pass" class="block text-sm font-medium text-gray-700 mb-2">Contraseña</label>
+                <input type="password" id="admin-pass" required autocomplete="off" placeholder="Ingresa la contraseña"
+                       class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm">
+            </div>
+            <p id="login-error" class="hidden mb-3 text-sm text-red-500 text-center"></p>
+            <button type="submit" id="login-submit-btn" class="w-full py-3 bg-navy hover:bg-navy-light text-white rounded-xl font-medium text-sm transition-all flex items-center justify-center gap-2">
+                Ingresar
+            </button>
+            <button type="button" id="login-cancel" class="w-full py-2.5 mt-2 text-gray-500 hover:text-gray-700 text-sm transition-colors">
+                Cancelar
+            </button>
+        </form>
+    </div>
+</div>
 
 <script>
-// Hero animation on load
-window.addEventListener('load', () => {
-  document.querySelector('.hero').classList.add('visible');
-});
+(function(){
+    'use strict';
 
-// Scroll animation for sections
-const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.2 });
-sections.forEach(section => observer.observe(section));
+    const SESSION_KEY = 'ipj_admin_token';
 
-// Gallery lightbox
-const galleryImages = document.querySelectorAll('.gallery img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = lightbox.querySelector('img');
+    function fmtDate(s){ const d=new Date(s+'T12:00:00'); return d.toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'}); }
+    function fmtShort(s){ const d=new Date(s+'T12:00:00'); return d.toLocaleDateString('es-ES',{day:'numeric',month:'short'}); }
+    function esc(str){ const d=document.createElement('div'); d.textContent=str; return d.innerHTML; }
 
-galleryImages.forEach(img => {
-  img.addEventListener('click', () => {
-    lightbox.style.display = 'flex';
-    lightboxImg.src = img.src;
-  });
-});
+    function toast(msg,isError){
+        const el=document.getElementById('toast');
+        const icon=el.querySelector('.iconify');
+        if(isError){ icon.setAttribute('data-icon','mdi:alert-circle'); icon.className='iconify text-red-400 text-lg'; }
+        else { icon.setAttribute('data-icon','mdi:check-circle'); icon.className='iconify text-gold text-lg'; }
+        document.getElementById('toast-msg').textContent=msg;
+        el.classList.remove('hidden');
+        clearTimeout(toast._t);
+        toast._t=setTimeout(()=>el.classList.add('hidden'),4000);
+    }
 
-lightbox.addEventListener('click', () => {
-  lightbox.style.display = 'none';
-});
+    function getToken(){ return sessionStorage.getItem(SESSION_KEY); }
+    function setToken(t){ sessionStorage.setItem(SESSION_KEY,t); }
+    function removeToken(){ sessionStorage.removeItem(SESSION_KEY); }
+
+    const sermones = [
+        { titulo:'La Fe que Mueve Montañas', texto:'Exploramos cómo la fe genuina, basada en la Palabra de Dios, puede transformar nuestras circunstancias más difíciles.', fecha:'2025-01-12', ref:'Marcos 11:22-24', icon:'mdi:mountain' },
+        { titulo:'El Poder de la Oración Persistente', texto:'Jesús nos enseñó a orar sin desanimarnos. Reflexionamos sobre la parábola de la viuda persistente.', fecha:'2025-01-05', ref:'Lucas 18:1-8', icon:'mdi:hands-pray' },
+        { titulo:'Andando en el Espíritu', texto:'La vida cristiana no se trata de nuestros propios esfuerzos, sino de ser guiados por el Espíritu Santo.', fecha:'2024-12-29', ref:'Gálatas 5:16-25', icon:'mdi:dove' }
+    ];
+
+    const galeria = [
+        { src:'https://z-cdn-media.chatglm.cn/files/d0644338-d35b-4fb3-ae5e-5da1f149f4e7.jpg?auth_key=1877251507-b9427a12846c4d978d4e9795ac875817-0-e8feff5e25d2176674f3754c0bed4908', alt:'Iglesia Pentecostal El Jordán' },
+        { src:'https://z-cdn-media.chatglm.cn/files/bb93588a-9127-449d-8680-100f5ff80410.jpg?auth_key=1877251507-fd56af6b875948f5aaf0a16ee86e4711-0-fd00bcec5649580c63537dfcddd5c9a4', alt:'Iglesia Pentecostal El Jordán' },
+        { src:'https://z-cdn-media.chatglm.cn/files/2feda6f4-650f-4b05-8d74-451b60b7b9d4.jpg?auth_key=1877251507-afa76576683e43bba36343c555792edc-0-c8dad85f454dd17718285c413595a993', alt:'Iglesia Pentecostal El Jordán' },
+        { src:'https://z-cdn-media.chatglm.cn/files/949e4892-0930-4dc4-8ab6-05187308ae42.jpg?auth_key=1877251507-5fe87dd766e24d69a8832d9960541d02-0-7e3eb975e0fbf2ea1379561f637de3c8', alt:'Iglesia Pentecostal El Jordán' },
+        { src:'https://z-cdn-media.chatglm.cn/files/afb15a46-2f59-4f7c-bbe6-694581df62d1.jpg?auth_key=1877251507-61fc674c316547a99a50c09b522d6e46-0-e7ffcb30aadbde5639124eb3163af138', alt:'Iglesia Pentecostal El Jordán' },
+        { src:'https://z-cdn-media.chatglm.cn/files/bea03875-3401-4595-a8b7-3fe86b84cad6.jpg?auth_key=1877251507-a5b74e703f9a4516b15fbc172209f422-0-db4cd4df7f8107314e3bde882858850e', alt:'Iglesia Pentecostal El Jordán' },
+        { src:'https://z-cdn-media.chatglm.cn/files/06bf92e7-dcac-478c-a5ae-6f70718fbf2e.jpg?auth_key=1877251507-5767c98e7ca541638dc8709db1abfb04-0-012798cd19028784e0609c97a957353c', alt:'Iglesia Pentecostal El Jordán' },
+        { src:'https://z-cdn-media.chatglm.cn/files/e2f45f2d-6f6e-49b4-b114-4342a6ae086f.jpg?auth_key=1877251507-4c980219e5894a0596a8747ea66ddb89-0-0bd54dae2178b7f29ce9e07911139481', alt:'Iglesia Pentecostal El Jordán' },
+        { src:'https://z-cdn-media.chatglm.cn/files/409ddc91-367e-4a61-8533-3c757ba82bc3.jpg?auth_key=1877251507-e83a7aca3e834114a9d4b2c40d2f5d99-0-2dcafccf1c143029ec227713230069da', alt:'Iglesia Pentecostal El Jordán' },
+        { src:'https://z-cdn-media.chatglm.cn/files/644a34bb-b851-4a41-ad73-d9c961862bba.jpg?auth_key=1877251507-9e3955cbb0fd4b85b49ea2bb6fca689c-0-31e75829283fef032b689f06cf0c1a0d', alt:'Iglesia Pentecostal El Jordán' }
+    ];
+
+    /* Admin routing */
+    function checkHash(){
+        if(window.location.hash==='#admin'){
+            if(getToken()){
+                fetch('/api/auth/check',{headers:{'Authorization':'Bearer '+getToken()}})
+                .then(r=>{ if(r.ok) showAdmin(); else { removeToken(); showLogin(); } })
+                .catch(()=>showLogin());
+            } else { showLogin(); }
+        } else { hideAdmin(); hideLogin(); }
+    }
+    function showAdmin(){ document.getElementById('admin-panel').classList.remove('hidden'); document.body.style.overflow='auto'; loadPrayers(); }
+    function hideAdmin(){ document.getElementById('admin-panel').classList.add('hidden'); document.body.style.overflow=''; }
+    function showLogin(){ document.getElementById('login-modal').classList.remove('hidden'); document.getElementById('admin-pass').value=''; document.getElementById('login-error').classList.add('hidden'); }
+    function hideLogin(){ document.getElementById('login-modal').classList.add('hidden'); }
+    window.addEventListener('hashchange',checkHash);
+
+    /* Login */
+    document.getElementById('login-form').addEventListener('submit',e=>{
+        e.preventDefault();
+        const errEl=document.getElementById('login-error');
+        const btn=document.getElementById('login-submit-btn');
+        errEl.classList.add('hidden');
+        const password=document.getElementById('admin-pass').value;
+        if(!password){errEl.textContent='Ingresa la contraseña';errEl.classList.remove('hidden');return;}
+        btn.disabled=true; btn.innerHTML='<span class="spinner"></span> Verificando...';
+        fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})})
+        .then(r=>r.json()).then(data=>{
+            btn.disabled=false; btn.innerHTML='Ingresar';
+            if(data.token){setToken(data.token);hideLogin();showAdmin();}
+            else{errEl.textContent=data.error||'Error al iniciar sesión';errEl.classList.remove('hidden');}
+        }).catch(()=>{btn.disabled=false;btn.innerHTML='Ingresar';errEl.textContent='Error de conexión';errEl.classList.remove('hidden');});
+    });
+    document.getElementById('login-cancel').addEventListener('click',()=>{hideLogin();window.location.hash='';});
+    document.getElementById('login-modal').addEventListener('click',e=>{if(e.target===e.currentTarget){hideLogin();window.location.hash='';}});
+    document.getElementById('admin-logout').addEventListener('click',()=>{removeToken();hideAdmin();window.location.hash='';});
+    document.getElementById('admin-refresh').addEventListener('click',loadPrayers);
+
+    /* Load prayers */
+    function loadPrayers(){
+        const list=document.getElementById('admin-list');
+        const empty=document.getElementById('admin-empty');
+        const loading=document.getElementById('admin-loading');
+        list.innerHTML=''; empty.classList.add('hidden'); loading.classList.remove('hidden');
+        fetch('/api/prayers',{headers:{'Authorization':'Bearer '+getToken()}})
+        .then(r=>{if(r.status===401){removeToken();showLogin();throw new Error('No autorizado');}return r.json();})
+        .then(prayers=>{
+            loading.classList.add('hidden');
+            const todayStr=new Date().toISOString().split('T')[0];
+            const weekAgo=new Date();weekAgo.setDate(weekAgo.getDate()-7);
+            const weekStr=weekAgo.toISOString().split('T')[0];
+            document.getElementById('stat-total').textContent=prayers.length;
+            document.getElementById('stat-today').textContent=prayers.filter(p=>p.fecha===todayStr).length;
+            document.getElementById('stat-week').textContent=prayers.filter(p=>p.fecha>=weekStr).length;
+            document.getElementById('stat-anon').textContent=prayers.filter(p=>!p.nombre||p.nombre==='Anónimo').length;
+            if(!prayers.length){empty.classList.remove('hidden');return;}
+            list.innerHTML=prayers.map(p=>`
+                <div class="admin-row bg-white rounded-xl p-4 border border-gray-100 flex gap-4 items-start" data-id="${p.id}">
+                    <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <span class="iconify text-primary text-sm" data-icon="mdi:account"></span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 flex-wrap mb-1">
+                            <span class="font-semibold text-navy text-sm">${esc(p.nombre||'Anónimo')}</span>
+                            <span class="text-xs text-gray-400">${fmtShort(p.fecha)}</span>
+                            ${p.hora?'<span class="text-xs text-gray-300">'+esc(p.hora)+'</span>':''}
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed">${esc(p.texto)}</p>
+                    </div>
+                    <button class="admin-del-btn shrink-0 w-8 h-8 rounded-lg bg-red-50 hover:bg-red-100 text-red-400 hover:text-red-600 flex items-center justify-center transition-colors border border-red-100" data-id="${p.id}" title="Eliminar">
+                        <span class="iconify text-sm" data-icon="mdi:delete-outline"></span>
+                    </button>
+                </div>`).join('');
+            list.querySelectorAll('.admin-del-btn').forEach(btn=>{
+                btn.addEventListener('click',()=>{
+                    btn.disabled=true;btn.innerHTML='<span class="spinner spinner-dark"></span>';
+                    fetch('/api/prayers/'+btn.dataset.id,{method:'DELETE',headers:{'Authorization':'Bearer '+getToken()}})
+                    .then(r=>r.json()).then(data=>{if(data.success)loadPrayers();else toast(data.error||'Error',true);})
+                    .catch(()=>toast('Error de conexión',true));
+                });
+            });
+        }).catch(err=>{loading.classList.add('hidden');if(err.message!=='No autorizado')toast('Error al cargar',true);});
+    }
+
+    document.getElementById('admin-delete-all').addEventListener('click',()=>{
+        if(!confirm('¿Borrar TODAS las peticiones?'))return;
+        fetch('/api/prayers',{method:'DELETE',headers:{'Authorization':'Bearer '+getToken()}})
+        .then(r=>r.json()).then(data=>{if(data.success){loadPrayers();toast(data.message);}else toast(data.error||'Error',true);})
+        .catch(()=>toast('Error de conexión',true));
+    });
+
+    checkHash();
+
+    /* Navbar */
+    const nav=document.getElementById('navbar');
+    window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);document.getElementById('back-top').classList.toggle('hidden',window.scrollY<500);},{passive:true});
+    document.getElementById('back-top').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
+
+    /* Mobile menu */
+    const overlay=document.getElementById('mobile-overlay');
+    function openM(){overlay.classList.remove('hidden');document.body.style.overflow='hidden';}
+    function closeM(){overlay.classList.add('hidden');document.body.style.overflow='';}
+    document.getElementById('menu-btn').addEventListener('click',openM);
+    document.getElementById('menu-close').addEventListener('click',closeM);
+    document.getElementById('mobile-backdrop').addEventListener('click',closeM);
+    document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',closeM));
+
+    /* Scroll reveal */
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active');});},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+    function observe(){document.querySelectorAll('.reveal:not(.active)').forEach(el=>obs.observe(el));}
+    observe();
+
+    /* Sermones */
+    (function(){
+        const g=document.getElementById('sermones-grid');
+        g.innerHTML=sermones.map((s,i)=>`
+            <article class="reveal reveal-d${i+1} bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+                <div class="p-6 md:p-7">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span class="iconify text-primary text-xl" data-icon="${s.icon}"></span>
+                        </div>
+                        <time class="text-xs text-gray-400">${fmtDate(s.fecha)}</time>
+                    </div>
+                    <h3 class="font-serif text-lg font-semibold text-navy mb-2 leading-snug">${esc(s.titulo)}</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-4">${esc(s.texto)}</p>
+                    <div class="inline-flex items-center gap-2 text-xs text-gold-dark bg-gold/10 px-3 py-1.5 rounded-lg">
+                        <span class="iconify" data-icon="mdi:book-open-variant"></span>
+                        ${esc(s.ref)}
+                    </div>
+                </div>
+            </article>`).join('');
+        observe();
+    })();
+
+    /* Galería */
+    let lbIdx=0;
+    (function(){
+        const g=document.getElementById('gallery-grid');
+        g.innerHTML=galeria.map((img,i)=>`
+            <div class="gallery-item reveal reveal-d${(i%3)+1} relative rounded-xl overflow-hidden cursor-pointer group aspect-card bg-gray-200" data-idx="${i}">
+                <img src="${img.src}" alt="${img.alt}" class="w-full h-full object-cover" loading="lazy">
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="iconify text-white text-3xl drop-shadow-lg" data-icon="mdi:magnify-plus"></span>
+                    </div>
+                </div>
+            </div>`).join('');
+        g.querySelectorAll('.gallery-item').forEach(el=>{el.addEventListener('click',()=>openLB(+el.dataset.idx));});
+        observe();
+    })();
+    function openLB(i){lbIdx=i;updLB();document.getElementById('lightbox').classList.remove('hidden');document.body.style.overflow='hidden';}
+    function closeLB(){document.getElementById('lightbox').classList.add('hidden');document.body.style.overflow='';}
+    function updLB(){const img=galeria[lbIdx];document.getElementById('lb-image').src=img.src;document.getElementById('lb-image').alt=img.alt;}
+    document.getElementById('lb-close').addEventListener('click',closeLB);
+    document.getElementById('lb-prev').addEventListener('click',e=>{e.stopPropagation();lbIdx=(lbIdx-1+galeria.length)%galeria.length;updLB();});
+    document.getElementById('lb-next').addEventListener('click',e=>{e.stopPropagation();lbIdx=(lbIdx+1)%galeria.length;updLB();});
+    document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLB();});
+    document.addEventListener('keydown',e=>{
+        if(document.getElementById('lightbox').classList.contains('hidden'))return;
+        if(e.key==='Escape')closeLB();
+        if(e.key==='ArrowLeft'){lbIdx=(lbIdx-1+galeria.length)%galeria.length;updLB();}
+        if(e.key==='ArrowRight'){lbIdx=(lbIdx+1)%galeria.length;updLB();}
+    });
+
+    /* Petición de oración */
+    const pText=document.getElementById('prayer-text');
+    const pCount=document.getElementById('char-count');
+    pText.addEventListener('input',()=>{const l=pText.value.length;pCount.textContent=l+' / 500';pCount.classList.toggle('text-red-400',l>450);});
+
+    document.getElementById('prayer-form').addEventListener('submit',e=>{
+        e.preventDefault();
+        const errEl=document.getElementById('form-error');
+        const btn=document.getElementById('prayer-submit-btn');
+        errEl.classList.add('hidden');
+        const nombre=document.getElementById('prayer-name').value.trim();
+        const texto=pText.value.trim();
+        if(!texto){errEl.textContent='Por favor, escribe tu petición.';errEl.classList.remove('hidden');return;}
+        if(texto.length<10){errEl.textContent='Mínimo 10 caracteres.';errEl.classList.remove('hidden');return;}
+        btn.disabled=true;btn.innerHTML='<span class="spinner"></span> Enviando...';
+        fetch('/api/prayers',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:nombre||'Anónimo',texto})})
+        .then(r=>r.json()).then(data=>{
+            btn.disabled=false;btn.innerHTML='<span class="iconify" data-icon="mdi:send"></span> Enviar Petición';
+            if(data.success){document.getElementById('prayer-name').value='';pText.value='';pCount.textContent='0 / 500';toast('¡Tu petición ha sido enviada! Oramos por ti. 🙏');}
+            else{errEl.textContent=data.error||'Error';errEl.classList.remove('hidden');}
+        }).catch(()=>{btn.disabled=false;btn.innerHTML='<span class="iconify" data-icon="mdi:send"></span> Enviar Petición';errEl.textContent='Error de conexión.';errEl.classList.remove('hidden');});
+    });
+
+    /* Horarios — resaltar hoy */
+    (function(){const today=new Date().getDay();document.querySelectorAll('.schedule-card').forEach(card=>{if(parseInt(card.dataset.day,10)===today)card.classList.add('today');});})();
+
+    document.getElementById('year').textContent=new Date().getFullYear();
+})();
 </script>
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker
-      .register("service-worker.js")
-      .then(() => {
-        console.log("Service Worker Registered");
-      });
-  }
-</script>
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker
-      .register("service-worker.js")
-      .then(() => console.log("Service Worker Registered"));
-  }
-  
-
-
-
+</body>
+</html>
