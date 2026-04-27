@@ -257,51 +257,47 @@ Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad 
 </section>
 
 <!-- ========== PETICIONES DE ORACIÓN ========== -->
-/* ===== Prayer form ===== */
-var pT=document.getElementById('pt');
-var pC=document.getElementById('cc');
-pT.addEventListener('input',function(){
-    var l=pT.value.length;
-    pC.textContent=l+' / 500';
-    pC.classList.toggle('text-red-400',l>450);
-});
-document.getElementById('pf').addEventListener('submit',function(e){
-    e.preventDefault();
-    var fe=document.getElementById('fe');
-    var bt=document.getElementById('pb');
-    fe.classList.add('hidden');
-    var tx=pT.value.trim();
-    if(!tx){fe.textContent='Por favor, escribe tu petición.';fe.classList.remove('hidden');return;}
-    if(tx.length<10){fe.textContent='Mínimo 10 caracteres.';fe.classList.remove('hidden');return;}
-    
-    bt.disabled=true;
-    bt.innerHTML='<span class="sp sp-d"></span> Enviando...';
-    
-    var formData=new FormData(document.getElementById('pf'));
-    
-    fetch('/',{
-        method:'POST',
-        headers:{'Content-Type':'application/x-www-form-urlencoded'},
-        body:new URLSearchParams(formData).toString()
-    }).then(function(r){
-        bt.disabled=false;
-        bt.innerHTML='<span class="iconify" data-icon="mdi:send"></span> Enviar Petición';
-        if(r.ok){
-            document.getElementById('pn').value='';
-            pT.value='';
-            pC.textContent='0 / 500';
-            showToast('¡Tu petición ha sido enviada! Oramos por ti. 🙏');
-        }else{
-            fe.textContent='Error al enviar. Intenta de nuevo.';
-            fe.classList.remove('hidden');
-        }
-    }).catch(function(){
-        bt.disabled=false;
-        bt.innerHTML='<span class="iconify" data-icon="mdi:send"></span> Enviar Petición';
-        fe.textContent='Error de conexión. Intenta de nuevo.';
-        fe.classList.remove('hidden');
-    });
-});
+<!-- ========== PETICIONES DE ORACIÓN ========== -->
+<section id="oracion" class="py-20 md:py-28 bg-cream-dark">
+<div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-4"><span class="iconify" data-icon="mdi:hands-pray"></span>Comunidad de Fe</div>
+<div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
+<span class="iconify" data-icon="mdi:hands-pray"></span>Comunidad de Fe
+</div>
+<h2 class="rv rv1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Peticiones de Oración</h2>
+<div class="rv rv2 divider mx-auto mb-6"></div>
+<p class="rv rv2 text-gray-500 max-w-lg mx-auto text-sm">Comparte tu petición y nuestra comunidad intercederá por ti en privado.</p>
+</div>
+<div class="rv rv3">
+<form id="pf" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+<div class="mb-5"><label for="pn" class="block text-sm font-medium text-gray-700 mb-2">Nombre <span class="text-gray-400 font-normal">(opcional)</span></label>
+<input type="text" id="pn" maxlength="50" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm"></div>
+<div class="mb-5"><label for="pt" class="block text-sm font-medium text-gray-700 mb-2">Tu petición <span class="text-primary">*</span></label>
+<div class="mb-5">
+<label for="pn" class="block text-sm font-medium text-gray-700 mb-2">Nombre <span class="text-gray-400 font-normal">(opcional)</span></label>
+<input type="text" id="pn" maxlength="50" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm">
+</div>
+<div class="mb-5">
+<label for="pt" class="block text-sm font-medium text-gray-700 mb-2">Tu petición <span class="text-primary">*</span></label>
+<textarea id="pt" rows="5" maxlength="500" required placeholder="Escribe tu petición de oración..." class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm resize-none"></textarea>
+<div class="flex justify-end mt-1"><span id="cc" class="text-xs text-gray-400">0 / 500</span></div>
+</div>
+<button type="submit" id="pb" class="w-full py-3 px-6 bg-primary hover:bg-primary-dark text-white rounded-xl font-medium text-sm transition-all hover:shadow-lg hover:shadow-primary/25 flex items-center justify-center gap-2"><span class="iconify" data-icon="mdi:send"></span>Enviar Petición</button>
+<button type="submit" id="pb" class="w-full py-3 px-6 bg-primary hover:bg-primary-dark text-white rounded-xl font-medium text-sm transition-all hover:shadow-lg hover:shadow-primary/25 flex items-center justify-center gap-2">
+<span class="iconify" data-icon="mdi:send"></span>Enviar Petición
+</button>
+<p id="fe" class="hidden mt-3 text-sm text-red-500 text-center"></p>
+</form>
+<p class="text-center text-xs text-gray-400 mt-5"><span class="iconify inline-block -mt-0.5 mr-1" data-icon="mdi:lock-outline"></span>Tu petición es privada y solo será vista por los líderes de la iglesia.</p>
+</div></div>
+<p class="text-center text-xs text-gray-400 mt-5">
+<span class="iconify inline-block -mt-0.5 mr-1" data-icon="mdi:lock-outline"></span>Tu petición es privada y solo será vista por los líderes de la iglesia.
+</p>
+</div>
+</div>
+</section>
+
 
 <!-- ========== HORARIOS ========== -->
 <section id="horarios" class="py-20 md:py-28 bg-cream">
