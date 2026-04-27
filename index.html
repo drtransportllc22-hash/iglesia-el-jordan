@@ -23,8 +23,6 @@ body{font-family:'Inter',sans-serif}
 .hb{background:linear-gradient(135deg,#1B2A4A 0%,#8B2635 40%,#1B2A4A 70%,#6E1E2A 100%);background-size:300% 300%;animation:hSh 18s ease infinite}
 @keyframes bn{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 .sb{animation:bn 2s ease infinite}
-
-/* ===== NAV ===== */
 #nav{transition:background .3s,box-shadow .3s,backdrop-filter .3s}
 #nav.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 4px rgba(0,0,0,.07)}
 #nav.scrolled .nl{color:#4B5563}
@@ -33,39 +31,25 @@ body{font-family:'Inter',sans-serif}
 #nav:not(.scrolled) .nl:hover{color:#C9A84C}
 #nav.scrolled .bt{color:#1B2A4A}
 #nav:not(.scrolled) .bt{color:#fff}
-
-/* ===== LOGO — negro siempre ===== */
 .logo-text{color:#000000 !important;transition:none}
 .logo-img{width:38px;height:38px;object-fit:contain;flex-shrink:0}
 @media(min-width:768px){.logo-img{width:44px;height:44px}}
-
-/* ===== MOBILE MENU ===== */
 #mo{transition:opacity .3s}
 #mo.hd{opacity:0;pointer-events:none}
 #mp{transition:transform .3s cubic-bezier(.16,1,.3,1)}
 #mo.hd #mp{transform:translateX(100%)}
 #mo:not(.hd) #mp{transform:translateX(0)}
-
-/* ===== GALLERY ===== */
 .gi img{transition:transform .5s cubic-bezier(.16,1,.3,1)}
 .gi:hover img{transform:scale(1.04)}
-
-/* ===== LIGHTBOX ===== */
 #lb{transition:opacity .3s}
 #lb.hd{opacity:0;pointer-events:none}
 #lb:not(.hd){opacity:1}
-
-/* ===== TOAST ===== */
 #ts{transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
 #ts.hd{transform:translateY(100px);opacity:0}
 #ts:not(.hd){transform:translateY(0);opacity:1}
-
-/* ===== BACK TO TOP ===== */
 #btop{transition:opacity .3s,transform .3s}
 #btop.hd{opacity:0;transform:translateY(16px);pointer-events:none}
 #btop:not(.hd){opacity:1;transform:translateY(0)}
-
-/* ===== REELS CARDS ===== */
 .rc{aspect-ratio:9/16;border-radius:1.25rem;overflow:hidden;cursor:pointer;background:#000;position:relative}
 .rc img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
 .rc:hover img{transform:scale(1.05)}
@@ -73,17 +57,11 @@ body{font-family:'Inter',sans-serif}
 .rp{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:56px;height:56px;background:rgba(255,0,0,.85);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 4px 20px rgba(255,0,0,.4)}
 .rc:hover .rp{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 6px 28px rgba(255,0,0,.5)}
 .rb{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:12px;display:flex;align-items:center;gap:6px}
-
-/* ===== SCHEDULE CARDS ===== */
 .ar{transition:all .3s;border:2px solid rgba(201,168,76,.15);box-shadow:0 8px 24px rgba(201,168,76,.08)}
 .ar:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.35);box-shadow:0 12px 32px rgba(201,168,76,.15)}
-
-/* ===== SPINNER ===== */
 .sp{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .6s linear infinite}
 .sp-d{border-color:rgba(27,42,74,.15);border-top-color:#1B2A4A}
 @keyframes sp{to{transform:rotate(360deg)}}
-
-/* ===== MISC ===== */
 .divider{width:56px;height:3px;background:linear-gradient(to right,#C9A84C,#E2C97A);border-radius:2px}
 .ac{aspect-ratio:3/2}
 .footer-logo{width:36px;height:36px;object-fit:contain;flex-shrink:0}
@@ -134,7 +112,7 @@ body{font-family:'Inter',sans-serif}
 <a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" class="text-white/60 hover:text-gold transition-colors">
 <span class="iconify text-xl" data-icon="mdi:facebook"></span>
 </a>
-<a href="https://m.youtube.com/channel/UCHr-7iyxaluoGXq_wykYQCtA" target="_blank" class="text-white/60 hover:text-gold transition-colors">
+<a href="https://youtube.com/@iglesiapentecostaleljordaninc?si=nlqOGHrhJYHKYSYV" target="_blank" class="text-white/60 hover:text-gold transition-colors">
 <span class="iconify text-xl" data-icon="mdi:youtube"></span>
 </a>
 </div>
@@ -161,7 +139,7 @@ body{font-family:'Inter',sans-serif}
 <div class="rv rv4 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
 <a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-6 py-3 bg-[#1877F2] hover:bg-[#166FE5] text-white rounded-xl font-medium text-sm transition-all hover:scale-[1.03] hover:shadow-lg hover:shadow-[#1877F2]/25">
 <span class="iconify text-xl" data-icon="mdi:facebook"></span>Síguenos en Facebook</a>
-<a href="https://m.youtube.com/channel/UCHr-7iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-6 py-3 bg-[#FF0000] hover:bg-[#CC0000] text-white rounded-xl font-medium text-sm transition-all hover:scale-[1.03] hover:shadow-lg hover:shadow-[#FF0000]/25">
+<a href="https://youtube.com/@iglesiapentecostaleljordaninc?si=nlqOGHrhJYHKYSYV" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-6 py-3 bg-[#FF0000] hover:bg-[#CC0000] text-white rounded-xl font-medium text-sm transition-all hover:scale-[1.03] hover:shadow-lg hover:shadow-[#FF0000]/25">
 <span class="iconify text-xl" data-icon="mdi:youtube"></span>Mira nuestros videos</a>
 </div>
 </div>
@@ -362,7 +340,7 @@ body{font-family:'Inter',sans-serif}
 <h4 class="font-semibold text-navy text-sm mb-1">Redes Sociales</h4>
 <div class="flex gap-3 mt-1">
 <a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#1877F2]/10 hover:bg-[#1877F2]/20 flex items-center justify-center transition-colors"><span class="iconify text-[#1877F2] text-sm" data-icon="mdi:facebook"></span></a>
-<a href="https://m.youtube.com/channel/UCHr-7iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#FF0000]/10 hover:bg-[#FF0000]/20 flex items-center justify-center transition-colors"><span class="iconify text-[#FF0000] text-sm" data-icon="mdi:youtube"></span></a>
+<a href="https://youtube.com/@iglesiapentecostaleljordaninc?si=nlqOGHrhJYHKYSYV" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#FF0000]/10 hover:bg-[#FF0000]/20 flex items-center justify-center transition-colors"><span class="iconify text-[#FF0000] text-sm" data-icon="mdi:youtube"></span></a>
 </div>
 </div>
 </div>
@@ -391,7 +369,7 @@ body{font-family:'Inter',sans-serif}
 <p class="text-sm leading-relaxed text-white/50 mb-5">Un lugar de encuentro con Dios, donde la fe se fortalece y la comunidad se une en amor y alabanza.</p>
 <div class="flex gap-3">
 <a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#1877F2]/20 flex items-center justify-center transition-all"><span class="iconify text-lg hover:text-[#1877F2]" data-icon="mdi:facebook"></span></a>
-<a href="https://m.youtube.com/channel/UCHr-7iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#FF0000]/20 flex items-center justify-center transition-all"><span class="iconify text-lg hover:text-[#FF0000]" data-icon="mdi:youtube"></span></a>
+<a href="https://youtube.com/@iglesiapentecostaleljordaninc?si=nlqOGHrhJYHKYSYV" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#FF0000]/20 flex items-center justify-center transition-all"><span class="iconify text-lg hover:text-[#FF0000]" data-icon="mdi:youtube"></span></a>
 </div>
 </div>
 <div>
@@ -456,7 +434,8 @@ var G=[
 {src:'https://z-cdn-media.chatglm.cn/files/06bf92e7-dcac-478c-a5ae-6f70718fbf2e.jpg?auth_key=1877251507-5767c98e7ca541638dc8709db1abfb04-0-012798cd19028784e0609c97a957353c',alt:'Iglesia Pentecostal El Jordán'},
 {src:'https://z-cdn-media.chatglm.cn/files/e2f45f2d-6f6e-49b4-b114-4342a6ae086f.jpg?auth_key=1877251507-4c980219e5894a0596a8747ea66ddb89-0-0bd54dae2178b7f29ce9e07911139481',alt:'Iglesia Pentecostal El Jordán'},
 {src:'https://z-cdn-media.chatglm.cn/files/409ddc91-367e-4a61-8533-3c757ba82bc3.jpg?auth_key=1877251507-e83a7aca3e834114a9d4b2c40d2f5d99-0-2dcafccf1c143029ec227713230069da',alt:'Iglesia Pentecostal El Jordán'},
-{src:'https://z-cdn-media.chatglm.cn/files/644a34bb-b851-4a41-ad73-d9c961862bba.jpg?auth_key=1877251507-9e3955cbb0fd4b85b49ea2bb6fca689c-0-31e75829283fef032b689f06cf0c1a0d',alt:'Iglesia Pentecostal El Jordán'}
+{src:'https://z-cdn-media.chatglm.cn/files/644a34bb-b851-4a41-ad73-d9c961862bba.jpg?auth_key=1877251507-9e3955cbb0fd4b85b49ea2bb6fca689c-0-31e75829283fef032b689f06cf0c1a0d',alt:'Iglesia Pentecostal El Jordán'},
+{src:'https://z-cdn-media.chatglm.cn/files/ee67bba8-b0a8-4d05-9b90-553ca6fae1bd.jpg?auth_key=1877265211-40ddabc1c83440228bee6cd90b1e08b7-0-48719cde4d6a378405a9a460e0de7359',alt:'Ceremonia de alabanza - Holy Holy Holy'}
 ];
 
 var nav=document.getElementById('nav');
