@@ -66,6 +66,13 @@ body{font-family:'Inter',sans-serif}
 .ac{aspect-ratio:3/2}
 .footer-logo{width:36px;height:36px;object-fit:contain;flex-shrink:0}
 .mobile-logo{width:32px;height:32px;object-fit:contain;flex-shrink:0}
+.pastor-frame{position:relative;overflow:hidden;border-radius:1.25rem}
+.pastor-frame::before{content:'';position:absolute;inset:0;border-radius:1.25rem;padding:3px;background:linear-gradient(135deg,#C9A84C 0%,#E2C97A 50%,#C9A84C 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2}
+.pastor-frame img{transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.pastor-frame:hover img{transform:scale(1.03)}
+.invitation-bg{background:linear-gradient(135deg,#1B2A4A 0%,#2A3D66 50%,#1B2A4A 100%);position:relative;overflow:hidden}
+.invitation-bg::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%);pointer-events:none}
+.invitation-bg::after{content:'';position:absolute;bottom:-30%;left:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(139,38,53,.06) 0%,transparent 70%);pointer-events:none}
 </style>
 </head>
 <body class="bg-cream text-gray-800 antialiased">
@@ -80,7 +87,7 @@ body{font-family:'Inter',sans-serif}
 </a>
 <div class="hidden md:flex items-center gap-8">
 <a href="#inicio" class="nl text-sm font-medium transition-colors">Inicio</a>
-<a href="#mision" class="nl text-sm font-medium transition-colors">Misión</a>
+<a href="#pastores" class="nl text-sm font-medium transition-colors">Pastores</a>
 <a href="#reels" class="nl text-sm font-medium transition-colors">Reels</a>
 <a href="#galeria" class="nl text-sm font-medium transition-colors">Galería</a>
 <a href="#oracion" class="nl text-sm font-medium transition-colors">Oración</a>
@@ -144,41 +151,49 @@ body{font-family:'Inter',sans-serif}
 </div>
 </div>
 <div class="absolute bottom-8 left-1/2 -translate-x-1/2 sb">
-<a href="#mision" class="text-white/40 hover:text-gold transition-colors">
+<a href="#pastores" class="text-white/40 hover:text-gold transition-colors">
 <span class="iconify text-3xl" data-icon="mdi:chevron-double-down"></span>
 </a>
 </div>
 </section>
 
-<!-- MISIÓN -->
-<section id="mision" class="py-20 md:py-28 bg-white">
+<!-- PASTORES -->
+<section id="pastores" class="py-20 md:py-28 bg-white">
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-12">
 <div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
-<span class="iconify" data-icon="mdi:dove"></span>Quiénes Somos</div>
-<h2 class="rv rv1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-8">Nuestra Misión</h2>
+<span class="iconify" data-icon="mdi:account-group"></span>Nuestros Pastores</div>
+<h2 class="rv rv1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Quiénes Somos</h2>
+<div class="rv rv2 divider mx-auto mb-6"></div>
 </div>
-<div class="rv rv2 relative">
-<span class="absolute -top-4 left-0 text-6xl text-gold/20 font-serif select-none">"</span>
-<div class="bg-cream-dark rounded-2xl p-8 md:p-12 border border-gold/20">
-<p class="font-serif text-lg sm:text-xl md:text-2xl leading-relaxed text-navy/80 text-center italic">Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad de fe comprometida con la enseñanza de la Palabra de Dios, guiados por el poder del Espíritu Santo, al servicio del prójimo. En Iglesia Pentecostal El Jordán creemos que cada persona es valiosa ante los ojos de Dios, y nuestro propósito es ser un canal de bendición para Baltimore y todas las naciones que Dios nos permita llevar este hermoso evangelio.</p>
+<div class="rv rv2 pastor-frame max-w-lg mx-auto shadow-xl">
+<img src="https://z-cdn-media.chatglm.cn/files/07e2c96a-d160-4c40-8ca7-fbef49a03530.jpg?auth_key=1877305580-221e1c5e61f44dd589275dc5dd30fee9-0-dba3e263ab729f7f17ee3bf36887e03f" alt="Pastores Mario y Ana Diaz" class="w-full h-auto object-cover rounded-[1.15rem]" loading="eager">
 </div>
-<span class="absolute -bottom-4 right-0 text-6xl text-gold/20 font-serif select-none">"</span>
+<div class="rv rv3 text-center mt-8">
+<div class="inline-flex items-center gap-2 mb-3">
+<span class="iconify text-gold text-xl" data-icon="mdi:cross-outline"></span>
+<span class="w-8 h-px bg-gold/40"></span>
+<span class="iconify text-gold text-xl" data-icon="mdi:cross-outline"></span>
 </div>
-<div class="rv rv3 grid grid-cols-3 gap-6 mt-12">
+<h3 class="font-serif text-2xl sm:text-3xl font-bold text-navy tracking-tight">Pastores Mario y Ana Diaz</h3>
+</div>
+<div class="rv rv4 mt-8 bg-cream-dark rounded-2xl p-8 md:p-10 border border-gold/15">
+<p class="font-serif text-lg sm:text-xl leading-relaxed text-navy/80 text-center italic">Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad de fe comprometida con la enseñanza de la Palabra de Dios, guiados por el poder del Espíritu Santo, al servicio del prójimo. En Iglesia Pentecostal El Jordán creemos que cada persona es valiosa ante los ojos de Dios, y nuestro propósito es ser un canal de bendición para Baltimore y más allá.</p>
+</div>
+<div class="rv rv5 grid grid-cols-3 gap-6 mt-10">
 <div class="text-center">
-<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-primary text-2xl" data-icon="mdi:book-open-page-variant"></span></div>
-<h3 class="font-serif font-semibold text-navy text-sm mb-1">Enseñanza</h3>
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-3"><span class="iconify text-primary text-2xl" data-icon="mdi:book-open-page-variant"></span></div>
+<h4 class="font-serif font-semibold text-navy text-sm mb-1">Enseñanza</h4>
 <p class="text-xs text-gray-400 leading-relaxed">Comprometidos con la Palabra de Dios</p>
 </div>
 <div class="text-center">
-<div class="w-14 h-14 rounded-2xl bg-gold/15 flex items-center justify-center mx-auto mb-4"><span class="iconify text-gold-dark text-2xl" data-icon="mdi:hands-pray"></span></div>
-<h3 class="font-serif font-semibold text-navy text-sm mb-1">Oración</h3>
+<div class="w-14 h-14 rounded-2xl bg-gold/15 flex items-center justify-center mx-auto mb-3"><span class="iconify text-gold-dark text-2xl" data-icon="mdi:hands-pray"></span></div>
+<h4 class="font-serif font-semibold text-navy text-sm mb-1">Oración</h4>
 <p class="text-xs text-gray-400 leading-relaxed">Guiados por el Espíritu Santo</p>
 </div>
 <div class="text-center">
-<div class="w-14 h-14 rounded-2xl bg-navy/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-navy text-2xl" data-icon="mdi:heart-multiple"></span></div>
-<h3 class="font-serif font-semibold text-navy text-sm mb-1">Servicio</h3>
+<div class="w-14 h-14 rounded-2xl bg-navy/10 flex items-center justify-center mx-auto mb-3"><span class="iconify text-navy text-2xl" data-icon="mdi:heart-multiple"></span></div>
+<h4 class="font-serif font-semibold text-navy text-sm mb-1">Servicio</h4>
 <p class="text-xs text-gray-400 leading-relaxed">Un canal de bendición</p>
 </div>
 </div>
@@ -257,6 +272,23 @@ body{font-family:'Inter',sans-serif}
 </form>
 <p class="text-center text-xs text-gray-400 mt-5">
 <span class="iconify inline-block -mt-0.5 mr-1" data-icon="mdi:lock-outline"></span>Tu petición es privada y solo será vista por los líderes de la iglesia.</p>
+</div>
+</div>
+</section>
+
+<!-- INVITACIÓN -->
+<section class="invitation-bg py-16 md:py-20">
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/15 text-gold-light text-xs font-semibold uppercase tracking-wider mb-6">
+<span class="iconify" data-icon="mdi:hand-heart"></span>Bienvenidos</div>
+<h2 class="rv rv1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">Pastores y Congregación<br>te invitan a <span class="text-gold">Nuestros Servicios</span></h2>
+<div class="rv rv2 divider mx-auto mb-6"></div>
+<p class="rv rv2 text-white/60 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">Te esperamos con los brazos abiertos. Ven y experimenta el poder de Dios en un ambiente de fe, amor y unidad.</p>
+<div class="rv rv3 flex items-center justify-center gap-3 mt-8">
+<a href="#horarios" class="inline-flex items-center gap-2 px-6 py-3 bg-gold hover:bg-gold-dark text-navy rounded-xl font-medium text-sm transition-all hover:shadow-lg hover:shadow-gold/25">
+<span class="iconify" data-icon="mdi:clock-outline"></span>Ver Horarios</a>
+<a href="#ubicacion" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl font-medium text-sm transition-all border border-white/15">
+<span class="iconify" data-icon="mdi:navigation"></span>Cómo Llegar</a>
 </div>
 </div>
 </section>
@@ -376,7 +408,7 @@ body{font-family:'Inter',sans-serif}
 <h4 class="font-semibold text-white text-sm mb-4 uppercase tracking-wider">Enlaces</h4>
 <ul class="space-y-2.5">
 <li><a href="#inicio" class="text-sm hover:text-gold transition-colors">Inicio</a></li>
-<li><a href="#mision" class="text-sm hover:text-gold transition-colors">Nuestra Misión</a></li>
+<li><a href="#pastores" class="text-sm hover:text-gold transition-colors">Nuestros Pastores</a></li>
 <li><a href="#reels" class="text-sm hover:text-gold transition-colors">Reels</a></li>
 <li><a href="#galeria" class="text-sm hover:text-gold transition-colors">Galería</a></li>
 <li><a href="#oracion" class="text-sm hover:text-gold transition-colors">Peticiones de Oración</a></li>
@@ -450,7 +482,7 @@ var ov=document.getElementById('mo');
 var ml=document.getElementById('ml');
 var menuLinks=[
     {href:'#inicio',label:'Inicio',icon:'mdi:home'},
-    {href:'#mision',label:'Misión',icon:'mdi:dove'},
+    {href:'#pastores',label:'Pastores',icon:'mdi:account-group'},
     {href:'#reels',label:'Reels',icon:'mdi:youtube-shorts'},
     {href:'#galeria',label:'Galería',icon:'mdi:image-multiple'},
     {href:'#oracion',label:'Oración',icon:'mdi:hands-pray'},
