@@ -27,22 +27,17 @@ body{font-family:'Inter',sans-serif}
 /* ===== NAV ===== */
 #nav{transition:background .3s,box-shadow .3s,backdrop-filter .3s}
 #nav.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 4px rgba(0,0,0,.07)}
-
-/* Nav links */
 #nav.scrolled .nl{color:#4B5563}
 #nav.scrolled .nl:hover{color:#8B2635}
 #nav:not(.scrolled) .nl{color:rgba(255,255,255,.8)}
 #nav:not(.scrolled) .nl:hover{color:#C9A84C}
-
-/* Hamburger button */
 #nav.scrolled .bt{color:#1B2A4A}
 #nav:not(.scrolled) .bt{color:#fff}
 
-/* ===== LOGO — siempre visible ===== */
-.logo-icon{color:#C9A84C !important;transition:none}
-.logo-text{transition:color .3s}
-#nav.scrolled .logo-text{color:#1B2A4A}
-#nav:not(.scrolled) .logo-text{color:#FFFFFF}
+/* ===== LOGO — negro siempre ===== */
+.logo-text{color:#000000 !important;transition:none}
+.logo-img{width:38px;height:38px;object-fit:contain;flex-shrink:0}
+@media(min-width:768px){.logo-img{width:44px;height:44px}}
 
 /* ===== MOBILE MENU ===== */
 #mo{transition:opacity .3s}
@@ -91,6 +86,8 @@ body{font-family:'Inter',sans-serif}
 /* ===== MISC ===== */
 .divider{width:56px;height:3px;background:linear-gradient(to right,#C9A84C,#E2C97A);border-radius:2px}
 .ac{aspect-ratio:3/2}
+.footer-logo{width:36px;height:36px;object-fit:contain;flex-shrink:0}
+.mobile-logo{width:32px;height:32px;object-fit:contain;flex-shrink:0}
 </style>
 </head>
 <body class="bg-cream text-gray-800 antialiased">
@@ -99,8 +96,8 @@ body{font-family:'Inter',sans-serif}
 <nav id="nav">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-between h-16 md:h-20">
-<a href="#inicio" class="flex items-center gap-2.5 transition-colors">
-<span class="iconify logo-icon text-2xl" data-icon="mdi:church"></span>
+<a href="#inicio" class="flex items-center gap-2.5">
+<img src="https://z-cdn-media.chatglm.cn/files/9a25d6d0-8185-401d-88aa-b32438ba3d21.png?auth_key=1877264399-66e3d26de9574c6585335f2cfa9e9b78-0-906989d985dea4453079a7cb0fd314fa" alt="Logo Iglesia El Jordán" class="logo-img rounded-full">
 <span class="logo-text font-serif font-bold text-lg md:text-xl tracking-tight">El Jordán</span>
 </a>
 <div class="hidden md:flex items-center gap-8">
@@ -125,7 +122,7 @@ body{font-family:'Inter',sans-serif}
 <div id="mp" class="absolute right-0 top-0 bottom-0 w-72 bg-navy shadow-2xl flex flex-col">
 <div class="flex items-center justify-between p-5 border-b border-white/10">
 <div class="flex items-center gap-2">
-<span class="iconify text-gold text-xl" data-icon="mdi:church"></span>
+<img src="https://z-cdn-media.chatglm.cn/files/9a25d6d0-8185-401d-88aa-b32438ba3d21.png?auth_key=1877264399-66e3d26de9574c6585335f2cfa9e9b78-0-906989d985dea4453079a7cb0fd314fa" alt="Logo" class="mobile-logo rounded-full">
 <span class="font-serif font-bold text-white text-base">El Jordán</span>
 </div>
 <button id="mcl" class="text-white/70 hover:text-white p-1" aria-label="Cerrar">
@@ -387,7 +384,10 @@ body{font-family:'Inter',sans-serif}
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 <div class="grid md:grid-cols-3 gap-10">
 <div>
-<div class="flex items-center gap-2 mb-4"><span class="iconify text-gold text-2xl" data-icon="mdi:church"></span><span class="font-serif font-bold text-white text-lg">Iglesia Pentecostal El Jordán</span></div>
+<div class="flex items-center gap-2.5 mb-4">
+<img src="https://z-cdn-media.chatglm.cn/files/9a25d6d0-8185-401d-88aa-b32438ba3d21.png?auth_key=1877264399-66e3d26de9574c6585335f2cfa9e9b78-0-906989d985dea4453079a7cb0fd314fa" alt="Logo" class="footer-logo rounded-full">
+<span class="font-serif font-bold text-white text-lg">Iglesia Pentecostal El Jordán</span>
+</div>
 <p class="text-sm leading-relaxed text-white/50 mb-5">Un lugar de encuentro con Dios, donde la fe se fortalece y la comunidad se une en amor y alabanza.</p>
 <div class="flex gap-3">
 <a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#1877F2]/20 flex items-center justify-center transition-all"><span class="iconify text-lg hover:text-[#1877F2]" data-icon="mdi:facebook"></span></a>
@@ -459,7 +459,6 @@ var G=[
 {src:'https://z-cdn-media.chatglm.cn/files/644a34bb-b851-4a41-ad73-d9c961862bba.jpg?auth_key=1877251507-9e3955cbb0fd4b85b49ea2bb6fca689c-0-31e75829283fef032b689f06cf0c1a0d',alt:'Iglesia Pentecostal El Jordán'}
 ];
 
-/* Nav scroll */
 var nav=document.getElementById('nav');
 var btop=document.getElementById('btop');
 window.addEventListener('scroll',function(){
@@ -468,7 +467,6 @@ window.addEventListener('scroll',function(){
 },{passive:true});
 btop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 
-/* Mobile menu */
 var ov=document.getElementById('mo');
 var ml=document.getElementById('ml');
 var menuLinks=[
@@ -490,14 +488,12 @@ document.getElementById('mcl').addEventListener('click',closeMenu);
 document.getElementById('mbg').addEventListener('click',closeMenu);
 ml.querySelectorAll('.mob-link').forEach(function(l){l.addEventListener('click',closeMenu);});
 
-/* Scroll reveal */
 var revealObs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on');});
 },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
 function observeReveals(){document.querySelectorAll('.rv:not(.on)').forEach(function(el){revealObs.observe(el);});}
 observeReveals();
 
-/* Gallery */
 var gIdx=0;
 (function(){
     var g=document.getElementById('gg');
@@ -510,7 +506,6 @@ var gIdx=0;
     observeReveals();
 })();
 
-/* Lightbox */
 var lbEl=document.getElementById('lb');
 var lbImg=document.getElementById('li');
 var lbCt=document.getElementById('lc-ct');
@@ -528,7 +523,6 @@ document.addEventListener('keydown',function(e){
     if(e.key==='ArrowRight'){gIdx=(gIdx+1)%G.length;updateLB();}
 });
 
-/* Prayer form */
 var pT=document.getElementById('pt');
 var pC=document.getElementById('cc');
 pT.addEventListener('input',function(){
@@ -571,7 +565,6 @@ document.getElementById('pf').addEventListener('submit',function(e){
     });
 });
 
-/* Toast */
 var toastTimer=null;
 function showToast(msg){
     var ts=document.getElementById('ts');
@@ -581,7 +574,6 @@ function showToast(msg){
     toastTimer=setTimeout(function(){ts.classList.add('hd');},3500);
 }
 
-/* Year */
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 })();
