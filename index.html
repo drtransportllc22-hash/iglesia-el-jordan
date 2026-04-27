@@ -16,17 +16,13 @@ body{font-family:'Inter',sans-serif}
 ::-webkit-scrollbar{width:7px}
 ::-webkit-scrollbar-track{background:#F5EFE3}
 ::-webkit-scrollbar-thumb{background:#C9A84C;border-radius:4px}
-
 .rv{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(.16,1,.3,1)}
 .rv.on{opacity:1;transform:translateY(0)}
 .rv1{transition-delay:.1s}.rv2{transition-delay:.2s}.rv3{transition-delay:.3s}.rv4{transition-delay:.4s}.rv5{transition-delay:.5s}
-
 @keyframes hSh{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .hb{background:linear-gradient(135deg,#1B2A4A 0%,#8B2635 40%,#1B2A4A 70%,#6E1E2A 100%);background-size:300% 300%;animation:hSh 18s ease infinite}
-
 @keyframes bn{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 .sb{animation:bn 2s ease infinite}
-
 #nav{transition:background .3s,box-shadow .3s,backdrop-filter .3s}
 #nav.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 4px rgba(0,0,0,.07)}
 #nav.scrolled .nl{color:#4B5563}
@@ -37,28 +33,22 @@ body{font-family:'Inter',sans-serif}
 #nav:not(.scrolled) .nl:hover{color:#C9A84C}
 #nav:not(.scrolled) .lg{color:#fff}
 #nav:not(.scrolled) .bt{color:#fff}
-
 #mo{transition:opacity .3s}
 #mo.hd{opacity:0;pointer-events:none}
 #mp{transition:transform .3s cubic-bezier(.16,1,.3,1)}
 #mo.hd #mp{transform:translateX(100%)}
 #mo:not(.hd) #mp{transform:translateX(0)}
-
 .gi img{transition:transform .5s cubic-bezier(.16,1,.3,1)}
 .gi:hover img{transform:scale(1.04)}
-
 #lb{transition:opacity .3s}
 #lb.hd{opacity:0;pointer-events:none}
 #lb:not(.hd){opacity:1}
-
 #ts{transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s}
 #ts.hd{transform:translateY(100px);opacity:0}
 #ts:not(.hd){transform:translateY(0);opacity:1}
-
 #btop{transition:opacity .3s,transform .3s}
 #btop.hd{opacity:0;transform:translateY(16px);pointer-events:none}
 #btop:not(.hd){opacity:1;transform:translateY(0)}
-
 .rc{aspect-ratio:9/16;border-radius:1.25rem;overflow:hidden;cursor:pointer;background:#000;position:relative}
 .rc img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
 .rc:hover img{transform:scale(1.05)}
@@ -66,21 +56,18 @@ body{font-family:'Inter',sans-serif}
 .rp{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:56px;height:56px;background:rgba(255,0,0,.85);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 4px 20px rgba(255,0,0,.4)}
 .rc:hover .rp{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 6px 28px rgba(255,0,0,.5)}
 .rb{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:12px;display:flex;align-items:center;gap:6px}
-
 .ar{transition:all .3s;border:2px solid rgba(201,168,76,.15);box-shadow:0 8px 24px rgba(201,168,76,.08)}
 .ar:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.35);box-shadow:0 12px 32px rgba(201,168,76,.15)}
-
 .sp{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .6s linear infinite}
 .sp-d{border-color:rgba(27,42,74,.15);border-top-color:#1B2A4A}
 @keyframes sp{to{transform:rotate(360deg)}}
-
 .divider{width:56px;height:3px;background:linear-gradient(to right,#C9A84C,#E2C97A);border-radius:2px}
 .ac{aspect-ratio:3/2}
 </style>
 </head>
 <body class="bg-cream text-gray-800 antialiased">
 
-<!-- ========== NAVIGATION ========== -->
+<!-- NAV -->
 <nav id="nav">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-between h-16 md:h-20">
@@ -104,7 +91,7 @@ body{font-family:'Inter',sans-serif}
 </div>
 </nav>
 
-<!-- ========== MOBILE MENU ========== -->
+<!-- MOBILE MENU -->
 <div id="mo" class="hd fixed inset-0 z-[60]">
 <div class="absolute inset-0 bg-black/50" id="mbg"></div>
 <div id="mp" class="absolute right-0 top-0 bottom-0 w-72 bg-navy shadow-2xl flex flex-col">
@@ -126,7 +113,7 @@ body{font-family:'Inter',sans-serif}
 </div>
 </div>
 
-<!-- ========== HERO ========== -->
+<!-- HERO -->
 <section id="inicio" class="hb relative min-h-screen flex items-center justify-center overflow-hidden">
 <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] md:w-[340px] md:h-[340px] opacity-[0.04] pointer-events-none" viewBox="0 0 100 100" fill="none">
 <rect x="42" y="8" width="16" height="84" rx="2" fill="white"/>
@@ -140,23 +127,14 @@ body{font-family:'Inter',sans-serif}
 <span class="text-gold text-sm font-medium">Baltimore, Maryland</span>
 </div>
 </div>
-<h1 class="rv rv1 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">
-Iglesia Pentecostal<br><span class="text-gold">El Jordán</span>
-</h1>
-<p class="rv rv2 text-white/75 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
-Un lugar de encuentro con Dios, donde la fe se fortalece y la comunidad se une en amor y alabanza.
-</p>
-<p class="rv rv3 text-white/50 text-sm max-w-xl mx-auto mb-10 italic font-serif">
-"Porque donde están dos o tres congregados en mi nombre, allí estoy yo en medio de ellos."
-<span class="block mt-1 text-gold/60 not-italic text-xs font-sans">— Mateo 18:20</span>
-</p>
+<h1 class="rv rv1 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6">Iglesia Pentecostal<br><span class="text-gold">El Jordán</span></h1>
+<p class="rv rv2 text-white/75 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">Un lugar de encuentro con Dios, donde la fe se fortalece y la comunidad se une en amor y alabanza.</p>
+<p class="rv rv3 text-white/50 text-sm max-w-xl mx-auto mb-10 italic font-serif">"Porque donde están dos o tres congregados en mi nombre, allí estoy yo en medio de ellos."<span class="block mt-1 text-gold/60 not-italic text-xs font-sans">— Mateo 18:20</span></p>
 <div class="rv rv4 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
 <a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-6 py-3 bg-[#1877F2] hover:bg-[#166FE5] text-white rounded-xl font-medium text-sm transition-all hover:scale-[1.03] hover:shadow-lg hover:shadow-[#1877F2]/25">
-<span class="iconify text-xl" data-icon="mdi:facebook"></span>Síguenos en Facebook
-</a>
+<span class="iconify text-xl" data-icon="mdi:facebook"></span>Síguenos en Facebook</a>
 <a href="https://m.youtube.com/channel/UCHr-7iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-6 py-3 bg-[#FF0000] hover:bg-[#CC0000] text-white rounded-xl font-medium text-sm transition-all hover:scale-[1.03] hover:shadow-lg hover:shadow-[#FF0000]/25">
-<span class="iconify text-xl" data-icon="mdi:youtube"></span>Mira nuestros videos
-</a>
+<span class="iconify text-xl" data-icon="mdi:youtube"></span>Mira nuestros videos</a>
 </div>
 </div>
 <div class="absolute bottom-8 left-1/2 -translate-x-1/2 sb">
@@ -166,43 +144,34 @@ Un lugar de encuentro con Dios, donde la fe se fortalece y la comunidad se une e
 </div>
 </section>
 
-<!-- ========== MISIÓN ========== -->
+<!-- MISIÓN -->
 <section id="mision" class="py-20 md:py-28 bg-white">
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-12">
 <div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
-<span class="iconify" data-icon="mdi:dove"></span>Quiénes Somos
-</div>
+<span class="iconify" data-icon="mdi:dove"></span>Quiénes Somos</div>
 <h2 class="rv rv1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-8">Nuestra Misión</h2>
 </div>
 <div class="rv rv2 relative">
 <span class="absolute -top-4 left-0 text-6xl text-gold/20 font-serif select-none">"</span>
 <div class="bg-cream-dark rounded-2xl p-8 md:p-12 border border-gold/20">
-<p class="font-serif text-lg sm:text-xl md:text-2xl leading-relaxed text-navy/80 text-center italic">
-Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad de fe comprometida con la enseñanza de la Palabra de Dios, guiados por el poder del Espíritu Santo, al servicio del prójimo. En Iglesia Pentecostal El Jordán creemos que cada persona es valiosa ante los ojos de Dios, y nuestro propósito es ser un canal de bendición para Baltimore y más allá.
-</p>
+<p class="font-serif text-lg sm:text-xl md:text-2xl leading-relaxed text-navy/80 text-center italic">Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad de fe comprometida con la enseñanza de la Palabra de Dios, guiados por el poder del Espíritu Santo, al servicio del prójimo. En Iglesia Pentecostal El Jordán creemos que cada persona es valiosa ante los ojos de Dios, y nuestro propósito es ser un canal de bendición para Baltimore y más allá.</p>
 </div>
 <span class="absolute -bottom-4 right-0 text-6xl text-gold/20 font-serif select-none">"</span>
 </div>
 <div class="rv rv3 grid grid-cols-3 gap-6 mt-12">
 <div class="text-center">
-<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-<span class="iconify text-primary text-2xl" data-icon="mdi:book-open-page-variant"></span>
-</div>
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-primary text-2xl" data-icon="mdi:book-open-page-variant"></span></div>
 <h3 class="font-serif font-semibold text-navy text-sm mb-1">Enseñanza</h3>
 <p class="text-xs text-gray-400 leading-relaxed">Comprometidos con la Palabra de Dios</p>
 </div>
 <div class="text-center">
-<div class="w-14 h-14 rounded-2xl bg-gold/15 flex items-center justify-center mx-auto mb-4">
-<span class="iconify text-gold-dark text-2xl" data-icon="mdi:hands-pray"></span>
-</div>
+<div class="w-14 h-14 rounded-2xl bg-gold/15 flex items-center justify-center mx-auto mb-4"><span class="iconify text-gold-dark text-2xl" data-icon="mdi:hands-pray"></span></div>
 <h3 class="font-serif font-semibold text-navy text-sm mb-1">Oración</h3>
 <p class="text-xs text-gray-400 leading-relaxed">Guiados por el Espíritu Santo</p>
 </div>
 <div class="text-center">
-<div class="w-14 h-14 rounded-2xl bg-navy/10 flex items-center justify-center mx-auto mb-4">
-<span class="iconify text-navy text-2xl" data-icon="mdi:heart-multiple"></span>
-</div>
+<div class="w-14 h-14 rounded-2xl bg-navy/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-navy text-2xl" data-icon="mdi:heart-multiple"></span></div>
 <h3 class="font-serif font-semibold text-navy text-sm mb-1">Servicio</h3>
 <p class="text-xs text-gray-400 leading-relaxed">Un canal de bendición</p>
 </div>
@@ -210,13 +179,12 @@ Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad 
 </div>
 </section>
 
-<!-- ========== REELS ========== -->
+<!-- REELS -->
 <section id="reels" class="py-20 md:py-28 bg-cream-dark">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-12">
 <div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-semibold uppercase tracking-wider mb-4">
-<span class="iconify" data-icon="mdi:youtube-shorts"></span>Reels
-</div>
+<span class="iconify" data-icon="mdi:youtube-shorts"></span>Reels</div>
 <h2 class="rv rv1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Reflexiones Cortas</h2>
 <div class="rv rv2 divider mx-auto mb-6"></div>
 <p class="rv rv2 text-gray-500 max-w-lg mx-auto text-sm">Mensajes breves para fortalecer tu fe en el día a día.</p>
@@ -241,13 +209,12 @@ Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad 
 </div>
 </section>
 
-<!-- ========== GALERÍA ========== -->
+<!-- GALERÍA -->
 <section id="galeria" class="py-20 md:py-28 bg-cream">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-16">
 <div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/15 text-gold-dark text-xs font-semibold uppercase tracking-wider mb-4">
-<span class="iconify" data-icon="mdi:image-multiple"></span>Momentos Especiales
-</div>
+<span class="iconify" data-icon="mdi:image-multiple"></span>Momentos Especiales</div>
 <h2 class="rv rv1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Nuestra Galería</h2>
 <div class="rv rv2 divider mx-auto mb-6"></div>
 <p class="rv rv2 text-gray-500 max-w-lg mx-auto text-sm">Imágenes de nuestra comunidad en alabanza y adoración.</p>
@@ -256,124 +223,90 @@ Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad 
 </div>
 </section>
 
-<!-- ========== PETICIONES DE ORACIÓN ========== -->
+<!-- ORACIÓN -->
 <section id="oracion" class="py-20 md:py-28 bg-cream-dark">
 <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-12">
-<div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-4"><span class="iconify" data-icon="mdi:hands-pray"></span>Comunidad de Fe</div>
 <div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
-<span class="iconify" data-icon="mdi:hands-pray"></span>Comunidad de Fe
-</div>
+<span class="iconify" data-icon="mdi:hands-pray"></span>Comunidad de Fe</div>
 <h2 class="rv rv1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Peticiones de Oración</h2>
 <div class="rv rv2 divider mx-auto mb-6"></div>
 <p class="rv rv2 text-gray-500 max-w-lg mx-auto text-sm">Comparte tu petición y nuestra comunidad intercederá por ti en privado.</p>
 </div>
 <div class="rv rv3">
-<form id="pf" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
-<div class="mb-5"><label for="pn" class="block text-sm font-medium text-gray-700 mb-2">Nombre <span class="text-gray-400 font-normal">(opcional)</span></label>
-<input type="text" id="pn" maxlength="50" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm"></div>
-<div class="mb-5"><label for="pt" class="block text-sm font-medium text-gray-700 mb-2">Tu petición <span class="text-primary">*</span></label>
+<form id="pf" name="peticiones-oracion" data-netlify="true" netlify-honeypot="bot-field" class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+<p class="hidden" aria-hidden="true"><label>No llenar: <input name="bot-field"></label></p>
 <div class="mb-5">
 <label for="pn" class="block text-sm font-medium text-gray-700 mb-2">Nombre <span class="text-gray-400 font-normal">(opcional)</span></label>
-<input type="text" id="pn" maxlength="50" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm">
+<input type="text" id="pn" name="nombre" maxlength="50" placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm">
 </div>
 <div class="mb-5">
 <label for="pt" class="block text-sm font-medium text-gray-700 mb-2">Tu petición <span class="text-primary">*</span></label>
-<textarea id="pt" rows="5" maxlength="500" required placeholder="Escribe tu petición de oración..." class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm resize-none"></textarea>
+<textarea id="pt" name="texto" rows="5" maxlength="500" required placeholder="Escribe tu petición de oración..." class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm resize-none"></textarea>
 <div class="flex justify-end mt-1"><span id="cc" class="text-xs text-gray-400">0 / 500</span></div>
 </div>
-<button type="submit" id="pb" class="w-full py-3 px-6 bg-primary hover:bg-primary-dark text-white rounded-xl font-medium text-sm transition-all hover:shadow-lg hover:shadow-primary/25 flex items-center justify-center gap-2"><span class="iconify" data-icon="mdi:send"></span>Enviar Petición</button>
 <button type="submit" id="pb" class="w-full py-3 px-6 bg-primary hover:bg-primary-dark text-white rounded-xl font-medium text-sm transition-all hover:shadow-lg hover:shadow-primary/25 flex items-center justify-center gap-2">
-<span class="iconify" data-icon="mdi:send"></span>
+<span class="iconify" data-icon="mdi:send"></span>Enviar Petición</button>
 <p id="fe" class="hidden mt-3 text-sm text-red-500 text-center"></p>
 </form>
-<p class="text-center text-xs text-gray-400 mt-5"><span class="iconify inline-block -mt-0.5 mr-1" data-icon="mdi:lock-outline"></span>Tu petición es privada y solo será vista por los líderes de la iglesia.</p>
-</div></div>
 <p class="text-center text-xs text-gray-400 mt-5">
-<span class="iconify inline-block -mt-0.5 mr-1" data-icon="mdi:lock-outline"></span>Tu petición es privada y solo será vista por los líderes de la iglesia.
-</p>
+<span class="iconify inline-block -mt-0.5 mr-1" data-icon="mdi:lock-outline"></span>Tu petición es privada y solo será vista por los líderes de la iglesia.</p>
 </div>
 </div>
 </section>
 
-
-<!-- ========== HORARIOS ========== -->
+<!-- HORARIOS -->
 <section id="horarios" class="py-20 md:py-28 bg-cream">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-16">
 <div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
-<span class="iconify" data-icon="mdi:clock-outline"></span>Jornadas de Fe
-</div>
+<span class="iconify" data-icon="mdi:clock-outline"></span>Jornadas de Fe</div>
 <h2 class="rv rv1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Horarios de Culto</h2>
 <div class="rv rv2 divider mx-auto mb-6"></div>
 <p class="rv rv2 text-gray-500 max-w-lg mx-auto text-sm">Te invitamos a unirte a nosotros en estos días de alabanza y enseñanza.</p>
 </div>
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 <div class="ar rv rv1 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 text-center">
-<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-<span class="iconify text-primary text-2xl" data-icon="mdi:calendar-week-begin"></span>
-</div>
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-primary text-2xl" data-icon="mdi:calendar-week-begin"></span></div>
 <h3 class="font-serif text-xl font-semibold text-navy mb-3">Martes</h3>
-<div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl">
-<span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span>
-<span class="font-semibold text-navy text-xl tracking-wide">7:30 <span class="text-sm font-medium text-gray-500">PM</span></span>
-</div>
+<div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl"><span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span><span class="font-semibold text-navy text-xl tracking-wide">7:30 <span class="text-sm font-medium text-gray-500">PM</span></span></div>
 </div>
 <div class="ar rv rv2 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 text-center">
-<div class="w-14 h-14 rounded-2xl bg-gold/15 flex items-center justify-center mx-auto mb-4">
-<span class="iconify text-gold-dark text-2xl" data-icon="mdi:bible"></span>
-</div>
+<div class="w-14 h-14 rounded-2xl bg-gold/15 flex items-center justify-center mx-auto mb-4"><span class="iconify text-gold-dark text-2xl" data-icon="mdi:bible"></span></div>
 <h3 class="font-serif text-xl font-semibold text-navy mb-3">Viernes</h3>
-<div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl">
-<span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span>
-<span class="font-semibold text-navy text-xl tracking-wide">7:30 <span class="text-sm font-medium text-gray-500">PM</span></span>
-</div>
+<div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl"><span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span><span class="font-semibold text-navy text-xl tracking-wide">7:30 <span class="text-sm font-medium text-gray-500">PM</span></span></div>
 </div>
 <div class="ar rv rv3 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 text-center">
-<div class="w-14 h-14 rounded-2xl bg-navy/10 flex items-center justify-center mx-auto mb-4">
-<span class="iconify text-navy text-2xl" data-icon="mdi:hands-pray"></span>
-</div>
+<div class="w-14 h-14 rounded-2xl bg-navy/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-navy text-2xl" data-icon="mdi:hands-pray"></span></div>
 <h3 class="font-serif text-xl font-semibold text-navy mb-3">Sábado</h3>
-<div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl">
-<span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span>
-<span class="font-semibold text-navy text-xl tracking-wide">7:30 <span class="text-sm font-medium text-gray-500">PM</span></span>
-</div>
+<div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl"><span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span><span class="font-semibold text-navy text-xl tracking-wide">7:30 <span class="text-sm font-medium text-gray-500">PM</span></span></div>
 </div>
 <div class="ar rv rv4 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 text-center">
-<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-<span class="iconify text-primary text-2xl" data-icon="mdi:cross"></span>
-</div>
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4"><span class="iconify text-primary text-2xl" data-icon="mdi:cross"></span></div>
 <h3 class="font-serif text-xl font-semibold text-navy mb-3">Domingo</h3>
-<div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl">
-<span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span>
-<span class="font-semibold text-navy text-xl tracking-wide">6:00 <span class="text-sm font-medium text-gray-500">PM</span></span>
-</div>
+<div class="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/5 rounded-xl"><span class="iconify text-gold-dark text-lg" data-icon="mdi:clock-outline"></span><span class="font-semibold text-navy text-xl tracking-wide">6:00 <span class="text-sm font-medium text-gray-500">PM</span></span></div>
 </div>
 </div>
 <div class="rv rv5 mt-10 bg-navy rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
 <div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center shrink-0">
-<span class="iconify text-gold text-2xl" data-icon="mdi:heart-multiple"></span>
-</div>
+<div class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center shrink-0"><span class="iconify text-gold text-2xl" data-icon="mdi:heart-multiple"></span></div>
 <div>
 <p class="text-white font-serif font-semibold">¡Siempre hay un lugar para ti!</p>
 <p class="text-white/50 text-sm mt-0.5">Ven como estás. Te esperamos con los brazos abiertos.</p>
 </div>
 </div>
 <a href="https://maps.google.com/?q=7834+Eastern+Ave+Baltimore+MD+21224" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-gold hover:bg-gold-dark text-navy rounded-xl font-medium text-sm transition-all hover:shadow-lg hover:shadow-gold/25">
-<span class="iconify" data-icon="mdi:navigation"></span>Cómo Llegar
-</a>
+<span class="iconify" data-icon="mdi:navigation"></span>Cómo Llegar</a>
 </div>
 </div>
 </section>
 
-<!-- ========== UBICACIÓN ========== -->
+<!-- UBICACIÓN -->
 <section id="ubicacion" class="py-20 md:py-28 bg-cream-dark">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-16">
 <div class="rv inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/15 text-gold-dark text-xs font-semibold uppercase tracking-wider mb-4">
-<span class="iconify" data-icon="mdi:map-marker-radius"></span>Visítanos
-</div>
+<span class="iconify" data-icon="mdi:map-marker-radius"></span>Visítanos</div>
 <h2 class="rv rv1 font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">Nuestra Ubicación</h2>
 <div class="rv rv2 divider mx-auto mb-6"></div>
 <p class="rv rv2 text-gray-500 max-w-lg mx-auto text-sm">Te esperamos con los brazos abiertos. ¡Ven y adora con nosotros!</p>
@@ -382,42 +315,31 @@ Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad 
 <div class="lg:col-span-2 rv rv1">
 <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6">
 <div class="flex gap-4">
-<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-<span class="iconify text-primary text-xl" data-icon="mdi:map-marker"></span>
-</div>
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0"><span class="iconify text-primary text-xl" data-icon="mdi:map-marker"></span></div>
 <div>
 <h4 class="font-semibold text-navy text-sm mb-1">Dirección</h4>
 <p class="text-gray-500 text-sm leading-relaxed">7834 Eastern Ave,<br>Baltimore, MD,<br>United States, Maryland</p>
 </div>
 </div>
 <div class="flex gap-4">
-<div class="w-10 h-10 rounded-xl bg-gold/15 flex items-center justify-center shrink-0">
-<span class="iconify text-gold-dark text-xl" data-icon="mdi:phone"></span>
-</div>
+<div class="w-10 h-10 rounded-xl bg-gold/15 flex items-center justify-center shrink-0"><span class="iconify text-gold-dark text-xl" data-icon="mdi:phone"></span></div>
 <div>
 <h4 class="font-semibold text-navy text-sm mb-1">Teléfono</h4>
 <a href="tel:+14103717241" class="text-gray-500 hover:text-primary text-sm transition-colors">(410) 371-7241</a>
 </div>
 </div>
 <div class="flex gap-4">
-<div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center shrink-0">
-<span class="iconify text-navy text-xl" data-icon="mdi:share-variant"></span>
-</div>
+<div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center shrink-0"><span class="iconify text-navy text-xl" data-icon="mdi:share-variant"></span></div>
 <div>
 <h4 class="font-semibold text-navy text-sm mb-1">Redes Sociales</h4>
 <div class="flex gap-3 mt-1">
-<a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#1877F2]/10 hover:bg-[#1877F2]/20 flex items-center justify-center transition-colors">
-<span class="iconify text-[#1877F2] text-sm" data-icon="mdi:facebook"></span>
-</a>
-<a href="https://m.youtube.com/channel/UCHr-7iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#FF0000]/10 hover:bg-[#FF0000]/20 flex items-center justify-center transition-colors">
-<span class="iconify text-[#FF0000] text-sm" data-icon="mdi:youtube"></span>
-</a>
+<a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#1877F2]/10 hover:bg-[#1877F2]/20 flex items-center justify-center transition-colors"><span class="iconify text-[#1877F2] text-sm" data-icon="mdi:facebook"></span></a>
+<a href="https://m.youtube.com/channel/UCHr-7iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-[#FF0000]/10 hover:bg-[#FF0000]/20 flex items-center justify-center transition-colors"><span class="iconify text-[#FF0000] text-sm" data-icon="mdi:youtube"></span></a>
 </div>
 </div>
 </div>
 <a href="https://maps.google.com/?q=7834+Eastern+Ave+Baltimore+MD+21224" target="_blank" rel="noopener noreferrer" class="block w-full py-3 px-6 bg-navy hover:bg-navy-light text-white rounded-xl font-medium text-sm transition-all hover:shadow-lg text-center">
-<span class="iconify inline-block mr-1 -mt-0.5" data-icon="mdi:navigation"></span>Cómo Llegar
-</a>
+<span class="iconify inline-block mr-1 -mt-0.5" data-icon="mdi:navigation"></span>Cómo Llegar</a>
 </div>
 </div>
 <div class="lg:col-span-3 rv rv2">
@@ -429,23 +351,16 @@ Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad 
 </div>
 </section>
 
-<!-- ========== FOOTER ========== -->
+<!-- FOOTER -->
 <footer class="bg-navy text-white/70">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
 <div class="grid md:grid-cols-3 gap-10">
 <div>
-<div class="flex items-center gap-2 mb-4">
-<span class="iconify text-gold text-2xl" data-icon="mdi:church"></span>
-<span class="font-serif font-bold text-white text-lg">Iglesia Pentecostal El Jordán</span>
-</div>
+<div class="flex items-center gap-2 mb-4"><span class="iconify text-gold text-2xl" data-icon="mdi:church"></span><span class="font-serif font-bold text-white text-lg">Iglesia Pentecostal El Jordán</span></div>
 <p class="text-sm leading-relaxed text-white/50 mb-5">Un lugar de encuentro con Dios, donde la fe se fortalece y la comunidad se une en amor y alabanza.</p>
 <div class="flex gap-3">
-<a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#1877F2]/20 flex items-center justify-center transition-all">
-<span class="iconify text-lg hover:text-[#1877F2]" data-icon="mdi:facebook"></span>
-</a>
-<a href="https://m.youtube.com/channel/UCHr-7iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#FF0000]/20 flex items-center justify-center transition-all">
-<span class="iconify text-lg hover:text-[#FF0000]" data-icon="mdi:youtube"></span>
-</a>
+<a href="https://www.facebook.com/share/18mbVKcyPm/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#1877F2]/20 flex items-center justify-center transition-all"><span class="iconify text-lg hover:text-[#1877F2]" data-icon="mdi:facebook"></span></a>
+<a href="https://m.youtube.com/channel/UCHr-7iyxaluoGXq_wykYQCtA" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#FF0000]/20 flex items-center justify-center transition-all"><span class="iconify text-lg hover:text-[#FF0000]" data-icon="mdi:youtube"></span></a>
 </div>
 </div>
 <div>
@@ -463,14 +378,8 @@ Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad 
 <div>
 <h4 class="font-semibold text-white text-sm mb-4 uppercase tracking-wider">Contacto</h4>
 <div class="space-y-3">
-<div class="flex items-start gap-3">
-<span class="iconify text-gold mt-0.5 shrink-0" data-icon="mdi:map-marker"></span>
-<span class="text-sm">7834 Eastern Ave, Baltimore, MD</span>
-</div>
-<div class="flex items-center gap-3">
-<span class="iconify text-gold shrink-0" data-icon="mdi:phone"></span>
-<a href="tel:+14103717241" class="text-sm hover:text-gold transition-colors">(410) 371-7241</a>
-</div>
+<div class="flex items-start gap-3"><span class="iconify text-gold mt-0.5 shrink-0" data-icon="mdi:map-marker"></span><span class="text-sm">7834 Eastern Ave, Baltimore, MD</span></div>
+<div class="flex items-center gap-3"><span class="iconify text-gold shrink-0" data-icon="mdi:phone"></span><a href="tel:+14103717241" class="text-sm hover:text-gold transition-colors">(410) 371-7241</a></div>
 </div>
 </div>
 </div>
@@ -481,22 +390,16 @@ Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad 
 </div>
 </footer>
 
-<!-- ========== LIGHTBOX ========== -->
+<!-- LIGHTBOX -->
 <div id="lb" class="hd fixed inset-0 z-[70] bg-black/90 flex items-center justify-center p-4" role="dialog" aria-modal="true">
-<button id="lc" class="absolute top-4 right-4 text-white/60 hover:text-white transition-colors z-10 p-2" aria-label="Cerrar">
-<span class="iconify text-3xl" data-icon="mdi:close"></span>
-</button>
-<button id="lp" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors z-10 p-2" aria-label="Anterior">
-<span class="iconify text-4xl" data-icon="mdi:chevron-left"></span>
-</button>
-<button id="ln" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors z-10 p-2" aria-label="Siguiente">
-<span class="iconify text-4xl" data-icon="mdi:chevron-right"></span>
-</button>
+<button id="lc" class="absolute top-4 right-4 text-white/60 hover:text-white transition-colors z-10 p-2" aria-label="Cerrar"><span class="iconify text-3xl" data-icon="mdi:close"></span></button>
+<button id="lp" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors z-10 p-2" aria-label="Anterior"><span class="iconify text-4xl" data-icon="mdi:chevron-left"></span></button>
+<button id="ln" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors z-10 p-2" aria-label="Siguiente"><span class="iconify text-4xl" data-icon="mdi:chevron-right"></span></button>
 <img id="li" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded-lg select-none">
-<div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40 text-sm font-medium" id="lc-counter"></div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40 text-sm font-medium" id="lc-ct"></div>
 </div>
 
-<!-- ========== TOAST ========== -->
+<!-- TOAST -->
 <div id="ts" class="hd fixed bottom-6 right-6 z-[80]">
 <div class="flex items-center gap-3 px-5 py-3 bg-navy text-white rounded-xl shadow-2xl text-sm">
 <span class="iconify text-gold text-lg" data-icon="mdi:check-circle"></span>
@@ -504,17 +407,15 @@ Es predicar el evangelio de Jesucristo que Salva las almas. Somos una comunidad 
 </div>
 </div>
 
-<!-- ========== BACK TO TOP ========== -->
+<!-- BACK TO TOP -->
 <button id="btop" class="hd fixed bottom-6 left-6 z-50 w-10 h-10 bg-primary hover:bg-primary-dark text-white rounded-full shadow-lg flex items-center justify-center transition-all" aria-label="Volver arriba">
 <span class="iconify text-lg" data-icon="mdi:chevron-up"></span>
 </button>
 
-<!-- ========== JAVASCRIPT ========== -->
 <script>
 (function(){
 'use strict';
 
-/* ===== Gallery images ===== */
 var G=[
 {src:'https://z-cdn-media.chatglm.cn/files/d0644338-d35b-4fb3-ae5e-5da1f149f4e7.jpg?auth_key=1877251507-b9427a12846c4d978d4e9795ac875817-0-e8feff5e25d2176674f3754c0bed4908',alt:'Iglesia Pentecostal El Jordán'},
 {src:'https://z-cdn-media.chatglm.cn/files/bb93588a-9127-449d-8680-100f5ff80410.jpg?auth_key=1877251507-fd56af6b875948f5aaf0a16ee86e4711-0-fd00bcec5649580c63537dfcddd5c9a4',alt:'Iglesia Pentecostal El Jordán'},
@@ -527,7 +428,7 @@ var G=[
 {src:'https://z-cdn-media.chatglm.cn/files/644a34bb-b851-4a41-ad73-d9c961862bba.jpg?auth_key=1877251507-9e3955cbb0fd4b85b49ea2bb6fca689c-0-31e75829283fef032b689f06cf0c1a0d',alt:'Iglesia Pentecostal El Jordán'}
 ];
 
-/* ===== Navigation scroll effect ===== */
+/* Nav scroll */
 var nav=document.getElementById('nav');
 var btop=document.getElementById('btop');
 window.addEventListener('scroll',function(){
@@ -536,7 +437,7 @@ window.addEventListener('scroll',function(){
 },{passive:true});
 btop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 
-/* ===== Mobile menu ===== */
+/* Mobile menu */
 var ov=document.getElementById('mo');
 var ml=document.getElementById('ml');
 var menuLinks=[
@@ -551,7 +452,6 @@ var menuLinks=[
 ml.innerHTML=menuLinks.map(function(l){
     return '<a href="'+l.href+'" class="mob-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-all text-sm font-medium"><span class="iconify text-lg text-gold/70" data-icon="'+l.icon+'"></span>'+l.label+'</a>';
 }).join('');
-
 function openMenu(){ov.classList.remove('hd');document.body.style.overflow='hidden';}
 function closeMenu(){ov.classList.add('hd');document.body.style.overflow='';}
 document.getElementById('menu-btn').addEventListener('click',openMenu);
@@ -559,14 +459,14 @@ document.getElementById('mcl').addEventListener('click',closeMenu);
 document.getElementById('mbg').addEventListener('click',closeMenu);
 ml.querySelectorAll('.mob-link').forEach(function(l){l.addEventListener('click',closeMenu);});
 
-/* ===== Scroll reveal ===== */
+/* Scroll reveal */
 var revealObs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on');});
 },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
 function observeReveals(){document.querySelectorAll('.rv:not(.on)').forEach(function(el){revealObs.observe(el);});}
 observeReveals();
 
-/* ===== Gallery render ===== */
+/* Gallery */
 var gIdx=0;
 (function(){
     var g=document.getElementById('gg');
@@ -579,37 +479,16 @@ var gIdx=0;
     observeReveals();
 })();
 
-/* ===== Lightbox ===== */
+/* Lightbox */
 var lbEl=document.getElementById('lb');
 var lbImg=document.getElementById('li');
-var lbCounter=document.getElementById('lc-counter');
-
-function openLB(i){
-    gIdx=i;
-    updateLB();
-    lbEl.classList.remove('hd');
-    document.body.style.overflow='hidden';
-}
-function closeLB(){
-    lbEl.classList.add('hd');
-    document.body.style.overflow='';
-}
-function updateLB(){
-    lbImg.src=G[gIdx].src;
-    lbImg.alt=G[gIdx].alt;
-    lbCounter.textContent=(gIdx+1)+' / '+G.length;
-}
+var lbCt=document.getElementById('lc-ct');
+function openLB(i){gIdx=i;updateLB();lbEl.classList.remove('hd');document.body.style.overflow='hidden';}
+function closeLB(){lbEl.classList.add('hd');document.body.style.overflow='';}
+function updateLB(){lbImg.src=G[gIdx].src;lbImg.alt=G[gIdx].alt;lbCt.textContent=(gIdx+1)+' / '+G.length;}
 document.getElementById('lc').addEventListener('click',closeLB);
-document.getElementById('lp').addEventListener('click',function(e){
-    e.stopPropagation();
-    gIdx=(gIdx-1+G.length)%G.length;
-    updateLB();
-});
-document.getElementById('ln').addEventListener('click',function(e){
-    e.stopPropagation();
-    gIdx=(gIdx+1)%G.length;
-    updateLB();
-});
+document.getElementById('lp').addEventListener('click',function(e){e.stopPropagation();gIdx=(gIdx-1+G.length)%G.length;updateLB();});
+document.getElementById('ln').addEventListener('click',function(e){e.stopPropagation();gIdx=(gIdx+1)%G.length;updateLB();});
 lbEl.addEventListener('click',function(e){if(e.target===lbEl)closeLB();});
 document.addEventListener('keydown',function(e){
     if(lbEl.classList.contains('hd'))return;
@@ -618,7 +497,7 @@ document.addEventListener('keydown',function(e){
     if(e.key==='ArrowRight'){gIdx=(gIdx+1)%G.length;updateLB();}
 });
 
-/* ===== Prayer form ===== */
+/* Prayer form — Netlify Forms */
 var pT=document.getElementById('pt');
 var pC=document.getElementById('cc');
 pT.addEventListener('input',function(){
@@ -631,37 +510,37 @@ document.getElementById('pf').addEventListener('submit',function(e){
     var fe=document.getElementById('fe');
     var bt=document.getElementById('pb');
     fe.classList.add('hidden');
-    var nm=document.getElementById('pn').value.trim();
     var tx=pT.value.trim();
     if(!tx){fe.textContent='Por favor, escribe tu petición.';fe.classList.remove('hidden');return;}
     if(tx.length<10){fe.textContent='Mínimo 10 caracteres.';fe.classList.remove('hidden');return;}
     bt.disabled=true;
     bt.innerHTML='<span class="sp sp-d"></span> Enviando...';
-    fetch('/api/prayers',{
+    var formData=new FormData(document.getElementById('pf'));
+    fetch('/',{
         method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({nombre:nm||'Anónimo',texto:tx})
-    }).then(function(r){return r.json();}).then(function(d){
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:new URLSearchParams(formData).toString()
+    }).then(function(r){
         bt.disabled=false;
         bt.innerHTML='<span class="iconify" data-icon="mdi:send"></span> Enviar Petición';
-        if(d.success){
+        if(r.ok){
             document.getElementById('pn').value='';
             pT.value='';
             pC.textContent='0 / 500';
-            showToast('¡Tu petición ha sido enviada! Oramos por ti. 🙏');
+            showToast('\u00A1Tu petici\u00F3n ha sido enviada! Oramos por ti. \uD83D\uDE4F');
         }else{
-            fe.textContent=d.error||'Error al enviar.';
+            fe.textContent='Error al enviar. Intenta de nuevo.';
             fe.classList.remove('hidden');
         }
     }).catch(function(){
         bt.disabled=false;
         bt.innerHTML='<span class="iconify" data-icon="mdi:send"></span> Enviar Petición';
-        fe.textContent='Error de conexión. Intenta de nuevo.';
+        fe.textContent='Error de conexi\u00F3n. Intenta de nuevo.';
         fe.classList.remove('hidden');
     });
 });
 
-/* ===== Toast notification ===== */
+/* Toast */
 var toastTimer=null;
 function showToast(msg){
     var ts=document.getElementById('ts');
@@ -671,7 +550,7 @@ function showToast(msg){
     toastTimer=setTimeout(function(){ts.classList.add('hd');},3500);
 }
 
-/* ===== Year ===== */
+/* Year */
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 })();
